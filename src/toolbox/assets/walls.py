@@ -68,7 +68,7 @@ class Walls(Toolbox):
 
     def select_asset(self):
         """
-        Select a asset type form the toolbar and palette.
+        Select an asset type form the toolbar and wall palette.
         """
         ui.click(*self.toolbar.resources)
         ui.click(*self.toolbar.walls)
@@ -86,12 +86,28 @@ class Walls(Toolbox):
 
         ui.click()
 
-    def draw_x(self, start: int, end: int, y_pos: int, asset: str = "concrete_walls"):
+    def draw_x(self, start: int, end: int, y_pos: int, asset: str = "concrete_walls") -> None:
+        """
+        Draw a wall in the x-axis of the Map Builder app.
+
+        :param start: The start location in the x-axis.
+        :param end: The end location in the x-axis.
+        :param y_pos: The y-axis to place the wall on.
+        :param asset: The type of wall asset to use. Default = 'concrete_walls'
+        """
         self.asset = asset
         walls.select_asset()
         super().draw(route=(start, y_pos, end, y_pos+1))
 
-    def draw_y(self, start: int, end: int, x_pos: int, asset: str = "concrete_walls"):
+    def draw_y(self, start: int, end: int, x_pos: int, asset: str = "concrete_walls") -> None:
+        """
+        Draw a wall in the y-axis of the Map Builder app.
+
+        :param start: The start location in the y-axis.
+        :param end: The end location in the y-axis.
+        :param x_pos: The x-axis to place the wall on.
+        :param asset: The type of wall asset to use. Default = 'concrete_walls'
+        """
         self.asset = asset
         walls.select_asset()
         super().draw(route=(x_pos, start, x_pos+1, end))
@@ -115,5 +131,3 @@ if __name__ == '__main__':
     walls.draw_y(offset, offset+6, 26+3, asset=walls.WIRE_FENCE)
     walls.draw_y(offset, offset+6, 26+4, asset=walls.SANDBAGS)
     walls.draw_y(offset, offset+6, 26+5, asset=walls.WOODEN_FENCE)
-
-
