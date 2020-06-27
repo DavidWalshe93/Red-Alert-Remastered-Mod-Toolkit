@@ -7,7 +7,7 @@ from math import floor
 
 import pyautogui as ui
 
-from src.toolbox.Toolbox import Toolbox
+from src.toolbox.toolbox import Toolbox
 
 
 class Resources(Toolbox):
@@ -43,8 +43,8 @@ class Resources(Toolbox):
         """
         Selects a asset type from the toolbar.
         """
-        ui.click(*self.structures)
-        ui.click(*self.resources)
+        ui.click(*self.toolbar.structures)
+        ui.click(*self.toolbar.resources)
 
     def calculate_size(self, size: int) -> None:
         """
@@ -93,6 +93,6 @@ class Resources(Toolbox):
 
 if __name__ == '__main__':
     ui.alert("Press ok when the App Builder is in the foreground.")
-    rs = Resources(9)
+    rs = Resources()
     rs.draw(size=9, gems=True, route=(30, 20, 50, 40))
     rs.draw(size=3, gems=False, force_replace=True, route=(30, 20, 40, 25))

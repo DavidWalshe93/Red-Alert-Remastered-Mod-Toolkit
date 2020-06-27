@@ -7,9 +7,12 @@ from abc import ABC, abstractmethod
 
 import pyautogui as ui
 
+from src.toolbox.toolbar import Toolbar
+
 
 class Toolbox(ABC):
-    BASE_ASSET_SIZE = 7
+
+    BASE_ASSET_SIZE = 7.3
     X_START = 502
     Y_START = 89
 
@@ -24,20 +27,7 @@ class Toolbox(ABC):
         self.y_max = y_max
         self.asset_width = 1
         self.asset_length = 1
-        self.toolbar_y_location = 62
-        self.toolbar_x_locations = {
-            "map": 43,
-            "smudge": 115,
-            "overlay": 192,
-            "terrain": 270,
-            "infantry": 334,
-            "unit": 400,
-            "structures": 470,
-            "resources": 565,
-            "walls": 640,
-            "waypoints": 724,
-            "cell_triggers": 800
-        }
+        self.toolbar = Toolbar()
 
     def x_map(self, coordinate: int) -> int:
         """
@@ -49,8 +39,7 @@ class Toolbox(ABC):
         if 0 > coordinate > self.x_max:
             raise ValueError("X-Grid only can be 0 to 115")
 
-        print(self.asset_width)
-        return coordinate * self.BASE_ASSET_SIZE + self.X_START + (self.BASE_ASSET_SIZE * self.asset_width)
+        return round(coordinate * self.BASE_ASSET_SIZE + self.X_START + (self.BASE_ASSET_SIZE * self.asset_width))
 
     def y_map(self, coordinate: int) -> int:
         """
@@ -61,16 +50,8 @@ class Toolbox(ABC):
         """
         if 0 > coordinate > self.y_max:
             raise ValueError("Y-Grid only can be 0 to 132")
-        print(self.asset_length)
-        return coordinate * self.BASE_ASSET_SIZE + self.Y_START + (self.BASE_ASSET_SIZE * self.asset_length)
 
-    @property
-    def structures(self):
-        return self.toolbar_x_locations["structures"], self.toolbar_y_location
-
-    @property
-    def resources(self):
-        return self.toolbar_x_locations["resources"], self.toolbar_y_location
+        return round(coordinate * self.BASE_ASSET_SIZE + self.Y_START + (self.BASE_ASSET_SIZE * self.asset_length))
 
     @abstractmethod
     def select_asset(self):
@@ -83,7 +64,6 @@ class Toolbox(ABC):
         """
         Implemented to draw on the Map Builder app canvas.
         """
-
         ui.keyDown("shift")
 
         if force_replace:
@@ -92,10 +72,16 @@ class Toolbox(ABC):
 
         ui.keyUp("shift")
 
-    def __draw(self, route: tuple, button: str = "LEFT"):
+    def __draw(self, route: tuple, button: str = "LEFT") -> None:
+        """
+        Draws on the Map Builder canvas. Content to be draw is predefined in subclass.
+
+        :param route: The route to draw from and to. (X1, Y1, X2, Y2)
+        :param button: The button to use for the pattern, LEFT-Draw, RIGHT-Remove.
+        """
         x_from, y_from, x_to, y_to = route
 
-        ui.click(x_from, y_from)
+        ui.click(self.x_map(x_from), self.y_map(y_from))
         for y in range(y_from, y_to):
             for x in range(x_from, x_to):
                 if y % self.asset_length == 0 and x % self.asset_width == 0:

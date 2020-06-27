@@ -55,5 +55,3 @@ class Generator:
 
 if __name__ == '__main__':
     gen = Generator()
-
-    print(gen.faction_stubs)
