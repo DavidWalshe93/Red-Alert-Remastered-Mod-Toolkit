@@ -17,7 +17,7 @@ class Toolbar:
             "overlay": 192,
             "terrain": 270,
             "infantry": 334,
-            "units": 400,
+            "unit_statistics": 400,
             "structures": 470,
             "resources": 565,
             "walls": 640,
@@ -47,7 +47,7 @@ class Toolbar:
 
     @property
     def units(self):
-        return self.toolbar_x_locations["units"], self.toolbar_y_location
+        return self.toolbar_x_locations["unit_statistics"], self.toolbar_y_location
 
     @property
     def structures(self):
