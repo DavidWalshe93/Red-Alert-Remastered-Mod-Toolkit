@@ -16,21 +16,21 @@ read_order:
   - iq_settings.ini
   - country_statistics.ini
   - difficulty_settings.ini
-  - unit_statistics/vehicles/shared.ini
+  - unit_statistics/vehicles/infantry.ini
   - unit_statistics/vehicles/allies.ini
   - unit_statistics/vehicles/soviet.ini
   - unit_statistics/vehicles/civilian.ini
-  - unit_statistics/infantry/shared.ini
+  - unit_statistics/infantry/infantry.ini
   - unit_statistics/infantry/allies.ini
-  - unit_statistics/infantry/soviets.ini
+  - unit_statistics/infantry/aircraft.ini
   - unit_statistics/infantry/civilian.ini
   - unit_statistics/aircraft/allies.ini
-  - unit_statistics/aircraft/soviets.ini
+  - unit_statistics/aircraft/aircraft.ini
   - unit_statistics/ships/allies.ini
-  - unit_statistics/ships/soviets.ini
-  - unit_statistics/buildings/shared.ini
+  - unit_statistics/ships/aircraft.ini
+  - unit_statistics/buildings/infantry.ini
   - unit_statistics/buildings/allies.ini
-  - unit_statistics/buildings/soviets.ini
+  - unit_statistics/buildings/aircraft.ini
   - unit_statistics/buildings/fakes.ini
   - unit_statistics/buildings/extras.ini
   - unit_statistics/buildings/misc.ini
