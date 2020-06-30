@@ -15,6 +15,7 @@ def sqlite_session(func: callable) -> callable:
     :param func: The function to decorate.
     :return: The wrapped function.
     """
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         with ConnectionManager.session_scope() as session:
             return_value = func(session, *args, **kwargs)
@@ -84,3 +85,16 @@ class DBManager(metaclass=Singleton):
         :return: All of th entries of that table.
         """
         return session.query(table_cls).all()
+
+    @staticmethod
+    @sqlite_session
+    def all_ordered_by(session, table_cls, order_by_field) -> tuple:
+        """
+        Helpere to return all items from a specified database.
+
+        :param session: The ORM session object.
+        :param table_cls: The class to use for the table creation.
+        :param order_by_field: The column to order the result by alphabetically.
+        :return: All of th entries of that table.
+        """
+        return session.query(table_cls).order_by(order_by_field).all()

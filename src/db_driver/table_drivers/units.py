@@ -50,8 +50,6 @@ class Core:
             except KeyError:
                 pass
 
-
-
 class Unit(Core):
 
     Passengers = Column(Integer, default=0)
@@ -80,9 +78,6 @@ class Vehicles(Base, Unit):
 class Aircraft(Base, Unit):
 
     __tablename__ = "aircraft"
-
-    def __repr__(self):
-        return f"Aircraft {self.__dict__}"
 
 
 class Ships(Base, Unit):
