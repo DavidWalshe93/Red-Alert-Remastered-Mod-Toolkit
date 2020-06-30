@@ -26,6 +26,7 @@ class MainWindow(Ui_MainWindow, QtWidgets.QMainWindow):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
 
+
 def run():
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()

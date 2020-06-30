@@ -7,6 +7,8 @@ import functools
 import logging
 from typing import Union
 
+from PyQt5 import QtWidgets, QtCore
+
 from src.gui.controllers.contoller import Controller
 from src.db_driver.table_drivers.units import Aircraft, Infantry, Vehicles, Ships, Buildings
 
@@ -46,10 +48,12 @@ class UnitController(Controller):
         self.table_cls = None
         self.populate_units_based_on_type()
         self.populate_data_based_on_unit()
+        self.view.ammoLabel.setStyleSheet("QLabel { background-color : red; color : blue; }")
 
     def bind_slots(self):
         self.view.unitTypeComboBox.currentTextChanged.connect(self.populate_units_based_on_type)
         self.view.unitComboBox.currentTextChanged.connect(self.populate_data_based_on_unit)
+        self.view.c4checkBox.stateChanged.connect(self.c4_disable_dependencies)
 
     def populate_units_based_on_type(self):
         key = self.view.unitTypeComboBox.currentText()
@@ -58,6 +62,12 @@ class UnitController(Controller):
         self.view.unitComboBox.clear()
         for i in items:
             self.view.unitComboBox.addItem(i.Name)
+
+    def c4_disable_dependencies(self):
+        if self.c4 == "yes":
+            self.view.infiltrateCheckBox.setEnabled(False)
+        else:
+            self.view.infiltrateCheckBox.setEnabled(True)
 
     def populate_data_based_on_unit(self):
         if len(self.view.unitComboBox.currentText().strip()) != 0:
@@ -83,6 +93,24 @@ class UnitController(Controller):
                 self.strength = result
                 self.tech_level = result
                 self.sensors = result
+                if type(result) is Buildings:
+                    pass
+                else:
+                    self.passengers = result
+                    self.speed = result
+                    if type(result) is Infantry:
+                        self.c4 = result
+                        self.fraidycat = result
+                        self.infiltrate = result
+                        self.is_canine = result
+                    elif type(result) is Vehicles:
+                        self.crushable = result
+                        self.tracked = result
+                        self.no_moving_fire = result
+                    else:
+                        pass
+
+
 
             except Exception as err:
                 logger.error(f"{err}")
@@ -106,11 +134,11 @@ class UnitController(Controller):
 
     @property
     def cloakable(self):
-        return self.view.cloakableComboBox.currentText()
+        return self.is_checked(self.view.cloakableCheckBox)
 
     @cloakable.setter
     def cloakable(self, value: UnitType):
-        self.view.cloakableComboBox.setCurrentText(value.Cloakable)
+        self.view.cloakableCheckBox.setCheckState(self.set_checked(value.Cloakable))
 
     @property
     def cost(self):
@@ -122,11 +150,11 @@ class UnitController(Controller):
 
     @property
     def doubleOwned(self):
-        return self.view.doubleOwnedComboBox.currentText()
+        return self.is_checked(self.view.doubleOwnedCheckBox)
 
     @doubleOwned.setter
     def doubleOwned(self, value: UnitType):
-        self.view.doubleOwnedComboBox.setCurrentText(value.DoubleOwned)
+        self.view.doubleOwnedCheckBox.setCheckState(self.set_checked(value.DoubleOwned))
 
     @property
     def explodes(self):
@@ -155,11 +183,11 @@ class UnitController(Controller):
 
     @property
     def invisible(self):
-        return self.view.invisibleComboBox.currentText()
+        return self.is_checked(self.view.invisibleCheckBox)
 
     @invisible.setter
     def invisible(self, value: UnitType):
-        self.view.invisibleComboBox.setCurrentText(value.Invisible)
+        self.view.invisibleCheckBox.setCheckState(self.set_checked(value.Invisible))
 
     @property
     def owner(self):
@@ -219,11 +247,11 @@ class UnitController(Controller):
 
     @property
     def self_healing(self):
-        return self.view.selfHealingComboBox.currentText()
+        return self.is_checked(self.view.selfHealingLabel)
 
     @self_healing.setter
     def self_healing(self, value: UnitType):
-        self.view.selfHealingComboBox.setCurrentText(value.SelfHealing)
+        self.view.selfHealingCheckBox.setCheckState(self.set_checked(value.SelfHealing))
 
     @property
     def sight(self):
@@ -242,6 +270,14 @@ class UnitController(Controller):
         self.view.healthSpinBox.setValue(value.Strength)
 
     @property
+    def sensors(self):
+        return self.is_checked(self.view.sensorsCheckBox)
+
+    @sensors.setter
+    def sensors(self, value: UnitType):
+        self.view.sensorsCheckBox.setCheckState(self.set_checked(value.Sensors))
+
+    @property
     def tech_level(self):
         return self.view.techLevelSpinBox.value()
 
@@ -250,12 +286,84 @@ class UnitController(Controller):
         self.view.techLevelSpinBox.setValue(value.TechLevel)
 
     @property
-    def sensors(self):
-        return self.view.sensorsComboBox.currentText()
+    def passengers(self):
+        return self.view.passengersSpinBox.value()
 
-    @sensors.setter
-    def sensors(self, value: UnitType):
-        self.view.sensorsComboBox.setCurrentText(value.Sensors.lower())
+    @passengers.setter
+    def passengers(self, value: UnitType):
+        self.view.passengersSpinBox.setValue(value.Passengers)
+
+    @property
+    def speed(self):
+        return self.view.speedSpinBox.value()
+
+    @speed.setter
+    def speed(self, value: UnitType):
+        self.view.speedSpinBox.setValue(value.Speed)
+
+    @property
+    def c4(self):
+        return self.is_checked(self.view.c4checkBox)
+
+    @c4.setter
+    def c4(self, value: UnitType):
+        self.view.c4checkBox.setCheckState(self.set_checked(value.C4))
+
+    @property
+    def fraidycat(self):
+        return self.is_checked(self.view.fraidycatCheckBox)
+
+    @fraidycat.setter
+    def fraidycat(self, value: UnitType):
+        self.view.fraidycatCheckBox.setCheckState(self.set_checked(value.Fraidycat))
+
+    @property
+    def infiltrate(self):
+        return self.is_checked(self.view.infiltrateCheckBox)
+
+    @infiltrate.setter
+    def infiltrate(self, value: UnitType):
+        self.view.infiltrateCheckBox.setCheckState(self.set_checked(value.Infiltrate))
+
+    @property
+    def is_canine(self):
+        return self.is_checked(self.view.isCanineCheckBox)
+
+    @is_canine.setter
+    def is_canine(self, value: UnitType):
+        self.view.isCanineCheckBox.setCheckState(self.set_checked(value.IsCanine))
+
+    @property
+    def crushable(self):
+        return self.is_checked(self.view.crushableCheckBox)
+
+    @crushable.setter
+    def crushable(self, value: UnitType):
+        self.view.crushableCheckBox.setCheckState(self.set_checked(value.Crushable))
+
+    @property
+    def tracked(self):
+        return self.is_checked(self.view.trackedCheckBox)
+
+    @tracked.setter
+    def tracked(self, value: UnitType):
+        self.view.trackedCheckBox.setCheckState(self.set_checked(value.Tracked))
+
+    @property
+    def no_moving_fire(self):
+        return self.is_checked(self.view.noMovingFireCheckBox)
+
+    @no_moving_fire.setter
+    def no_moving_fire(self, value: UnitType):
+        self.view.noMovingFireCheckBox.setCheckState(self.set_checked(value.NoMovingFire))
+
+    @staticmethod
+    def is_checked(checkbox: QtWidgets.QCheckBox):
+        return "yes" if checkbox.isChecked() else "no"
+
+    @staticmethod
+    def set_checked(value) -> bool:
+        return True if value.lower() == "yes" else False
 
     @non_none_return_value
     def get_table(self, key):
