@@ -32,7 +32,10 @@ class DBManager(metaclass=Singleton):
         Managers the database resource and allows CRUD operations.
         """
         ConnectionManager.db_path = db_path
-        ConnectionManager.base().metadata.create_all(bind=ConnectionManager.engine())
+        self.create_all()
+
+    def create_all(self):
+        ConnectionManager.meta_data().create_all(bind=ConnectionManager.engine())
 
     @staticmethod
     @sqlite_session
@@ -44,9 +47,15 @@ class DBManager(metaclass=Singleton):
         :param table_cls: The class to use for the table creation.
         :param data: The data to fill the table with.
         """
-        table = table_cls()
-        table.insert_from_dict(data)
-        session.add(table)
+        try:
+            table = table_cls()
+            table.insert_from_dict(data)
+            session.add(table)
+        except:
+            ConnectionManager.meta_data().create_all(bind=ConnectionManager.engine())
+            table = table_cls()
+            table.insert_from_dict(data)
+            session.add(table)
 
     @staticmethod
     @sqlite_session
@@ -98,3 +107,10 @@ class DBManager(metaclass=Singleton):
         :return: All of th entries of that table.
         """
         return session.query(table_cls).order_by(order_by_field).all()
+
+    @staticmethod
+    def drop_all():
+        """
+        Helper to drop all data in the database.
+        """
+        ConnectionManager.meta_data().drop_all(ConnectionManager.engine())

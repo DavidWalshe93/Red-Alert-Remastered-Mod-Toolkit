@@ -10,7 +10,7 @@ from typing import Union
 from PyQt5 import QtWidgets, QtCore
 
 from src.gui.controllers.contoller import Controller
-from src.db_driver.table_drivers.units import Aircraft, Infantry, Vehicles, Ships, Buildings
+from src.db_driver.models.units import Aircraft, Infantry, Vehicles, Ships, Buildings
 
 UnitType = Union[Aircraft, Infantry, Vehicles, Buildings, Ships]
 
@@ -63,6 +63,24 @@ class UnitController(Controller):
         for i in items:
             self.view.unitComboBox.addItem(i.Name)
 
+    @non_none_return_value
+    def get_table(self, key):
+        """
+        Returns the ORM Table object that matches the value key passed.
+
+        :param key: The text key to match the database table to.
+        :return: The database ORM Table object.
+        """
+        key = key.lower()
+        logger.info(f"Key value passed to get_table() = {key}")
+        return {
+            "aircraft": Aircraft,
+            "buildings": Buildings,
+            "infantry": Infantry,
+            "ships": Ships,
+            "vehicles": Vehicles
+        }.get(key, None)
+
     def c4_disable_dependencies(self):
         if self.c4 == "yes":
             self.view.infiltrateCheckBox.setEnabled(False)
@@ -94,6 +112,17 @@ class UnitController(Controller):
                 self.tech_level = result
                 self.sensors = result
                 if type(result) is Buildings:
+                    self.base_normal = result
+                    self.adjacent = result
+                    self.bib = result
+                    self.capturable = result
+                    self.crewed = result
+                    self.power = result
+                    self.powered = result
+                    self.repairable = result
+                    self.storage = result
+                    self.unsellable = result
+                    self.water_bound = result
                     pass
                 else:
                     self.passengers = result
@@ -107,10 +136,6 @@ class UnitController(Controller):
                         self.crushable = result
                         self.tracked = result
                         self.no_moving_fire = result
-                    else:
-                        pass
-
-
 
             except Exception as err:
                 logger.error(f"{err}")
@@ -357,6 +382,94 @@ class UnitController(Controller):
     def no_moving_fire(self, value: UnitType):
         self.view.noMovingFireCheckBox.setCheckState(self.set_checked(value.NoMovingFire))
 
+    @property
+    def base_normal(self):
+        return self.is_checked(self.view.baseNormalCheckBox)
+    
+    @base_normal.setter
+    def base_normal(self, value: UnitType):
+        self.view.baseNormalCheckBox.setCheckState(self.set_checked(value.BaseNormal))
+    
+    @property
+    def adjacent(self):
+        return self.view.adjacentSpinBox.value()
+    
+    @adjacent.setter
+    def adjacent(self, value: UnitType):
+        self.view.adjacentSpinBox.setValue(value.Adjacent)
+        
+    @property
+    def bib(self):
+        return self.is_checked(self.view.bibCheckBox)
+    
+    @bib.setter
+    def bib(self, value: UnitType):
+        self.view.bibCheckBox.setCheckState(self.set_checked(value.Bib))
+        
+    @property
+    def capturable(self):
+        return self.is_checked(self.view.capturableCheckBox)
+    
+    @capturable.setter
+    def capturable(self, value: UnitType):
+        self.view.capturableCheckBox.setCheckState(self.set_checked(value.Capturable))
+        
+    @property
+    def crewed(self):
+        return self.is_checked(self.view.crewedCheckBox)
+    
+    @crewed.setter
+    def crewed(self, value: UnitType):
+        self.view.crewedCheckBox.setCheckState(self.set_checked(value.Crewed))
+
+    @property
+    def power(self):
+        return self.view.powerSpinBox.value()
+
+    @power.setter
+    def power(self, value: UnitType):
+        self.view.powerSpinBox.setValue(value.Power)
+
+    @property
+    def powered(self):
+        return self.is_checked(self.view.poweredCheckBox)
+
+    @powered.setter
+    def powered(self, value: UnitType):
+        self.view.poweredCheckBox.setCheckState(self.set_checked(value.Powered))
+
+    @property
+    def repairable(self):
+        return self.is_checked(self.view.repairableCheckBox)
+
+    @repairable.setter
+    def repairable(self, value: UnitType):
+        self.view.repairableCheckBox.setCheckState(self.set_checked(value.Repairable))
+
+    @property
+    def storage(self):
+        return self.view.storageSpinBox.value()
+    
+    @storage.setter
+    def storage(self, value: UnitType):
+        self.view.storageSpinBox.setValue(value.Storage)
+
+    @property
+    def unsellable(self):
+        return self.is_checked(self.view.unsellableCheckBox)
+
+    @unsellable.setter
+    def unsellable(self, value: UnitType):
+        self.view.unsellableCheckBox.setCheckState(self.set_checked(value.Unsellable))
+        
+    @property
+    def water_bound(self):
+        return self.is_checked(self.view.waterBoundCheckBox)
+    
+    @water_bound.setter
+    def water_bound(self, value: UnitType):
+        self.view.waterBoundCheckBox.setCheckState(self.set_checked(value.WaterBound))
+    
     @staticmethod
     def is_checked(checkbox: QtWidgets.QCheckBox):
         return "yes" if checkbox.isChecked() else "no"
@@ -364,21 +477,3 @@ class UnitController(Controller):
     @staticmethod
     def set_checked(value) -> bool:
         return True if value.lower() == "yes" else False
-
-    @non_none_return_value
-    def get_table(self, key):
-        """
-        Returns the ORM Table object that matches the value key passed.
-
-        :param key: The text key to match the database table to.
-        :return: The database ORM Table object.
-        """
-        key = key.lower()
-        logger.info(f"Key value passed to get_table() = {key}")
-        return {
-            "aircraft": Aircraft,
-            "buildings": Buildings,
-            "infantry": Infantry,
-            "ships": Ships,
-            "vehicles": Vehicles
-        }.get(key, None)

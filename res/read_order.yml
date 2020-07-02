@@ -28,12 +28,12 @@ read_order:
   - unit_statistics/aircraft/aircraft.ini
   - unit_statistics/ships/allies.ini
   - unit_statistics/ships/aircraft.ini
-  - unit_statistics/buildings/infantry.ini
-  - unit_statistics/buildings/allies.ini
-  - unit_statistics/buildings/aircraft.ini
-  - unit_statistics/buildings/fakes.ini
-  - unit_statistics/buildings/extras.ini
-  - unit_statistics/buildings/misc.ini
+  - unit_statistics/extra/infantry.ini
+  - unit_statistics/extra/allies.ini
+  - unit_statistics/extra/aircraft.ini
+  - unit_statistics/extra/fakes.ini
+  - unit_statistics/extra/extras.ini
+  - unit_statistics/extra/misc.ini
   - weapon_statistics.ini
   - projectile_statisitics.ini
   - warhead_characteristics.ini

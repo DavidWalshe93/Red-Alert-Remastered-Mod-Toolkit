@@ -88,6 +88,17 @@ class ConnectionManager(metaclass=Singleton):
         return cls._Base
 
     @classmethod
+    def meta_data(cls):
+        """
+        Returns the database metadata.
+
+        :return: The metadata for the DB.
+        """
+        cls.init()
+
+        return cls.base().metadata
+
+    @classmethod
     @contextmanager
     def session_scope(cls):
         """
