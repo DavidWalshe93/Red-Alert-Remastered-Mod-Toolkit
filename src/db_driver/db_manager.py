@@ -32,14 +32,30 @@ class DBManager(metaclass=Singleton):
         Managers the database resource and allows CRUD operations.
         """
         ConnectionManager.db_path = db_path
-        self.create_all()
+        self.init_tables()
 
-    def create_all(self):
+    @staticmethod
+    def init_tables():
         ConnectionManager.meta_data().create_all(bind=ConnectionManager.engine())
 
     @staticmethod
     @sqlite_session
     def create(session, table_cls, data: dict = None) -> None:
+        """
+        Creates a given record in a table. Checks to ensure all tables exist before inserting a record.
+
+        :param session: The ORM session object.
+        :param table_cls: The class to use for the table creation.
+        :param data: The data to fill the table with.
+        """
+        try:
+            DBManager.__create(session, table_cls, data)
+        except:
+            DBManager.init_tables()
+            DBManager.__create(session, table_cls, data)
+
+    @staticmethod
+    def __create(session, table_cls, data: dict = None):
         """
         Creates the passed table class in the SQLite table.
 
@@ -47,15 +63,9 @@ class DBManager(metaclass=Singleton):
         :param table_cls: The class to use for the table creation.
         :param data: The data to fill the table with.
         """
-        try:
-            table = table_cls()
-            table.insert_from_dict(data)
-            session.add(table)
-        except:
-            ConnectionManager.meta_data().create_all(bind=ConnectionManager.engine())
-            table = table_cls()
-            table.insert_from_dict(data)
-            session.add(table)
+        table = table_cls()
+        table.insert_from_dict(data)
+        session.add(table)
 
     @staticmethod
     @sqlite_session
@@ -71,6 +81,21 @@ class DBManager(metaclass=Singleton):
         :return: A list of row items that match the search criteria.
         """
         return session.query(table).filter_by(**kwargs).all()
+
+    @staticmethod
+    def query_first(table, **kwargs: dict) -> any:
+        """
+        Requests data from the database following some search criteria provided by kwargs.
+
+        Only returns the FIRST record found in the search.
+
+        Similar to a "SELECT * FROM $TABLE$ WHERE {**kwargs}" in SQL.
+
+        :param table: The table object to query.
+        :param kwargs: The search criteria for the WHERE clause.
+        :return: A list of row items that match the search criteria.
+        """
+        return DBManager.query(table, **kwargs)[0]
 
     @staticmethod
     @sqlite_session

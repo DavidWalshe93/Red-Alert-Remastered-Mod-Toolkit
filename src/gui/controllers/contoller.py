@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 class Controller(ABC):
 
-    def __init__(self, view: MainWindow, db: DBManager):
+    def __init__(self, view: MainWindow, model: DBManager):
         """
         Base controller to be subclassed.
 
@@ -24,11 +24,21 @@ class Controller(ABC):
         :param db: The database to access.
         """
         self.view = view
-        self.db = db
+        self.model = model
 
     @abstractmethod
-    def bind_slots(self):
+    def bind_slots(self) -> None:
         """
         Abstract method used to bind slots in the view.
         """
         pass
+
+    @abstractmethod
+    def populate_data(self, result: any) -> None:
+        """
+        Abstract method to be used to populated fields on loading and usage.
+
+        :param result: The data to use to populate the data.
+        """
+        pass
+

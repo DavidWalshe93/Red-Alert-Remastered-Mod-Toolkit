@@ -79,7 +79,7 @@ class ConnectionManager(metaclass=Singleton):
     @classmethod
     def base(cls):
         """
-        Returns the base-model for the database.
+        Returns the view-model for the database.
 
         :return: The declarative Base object.
         """

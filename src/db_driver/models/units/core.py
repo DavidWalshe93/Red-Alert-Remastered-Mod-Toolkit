@@ -50,53 +50,50 @@ class Core:
             except KeyError:
                 pass
 
+    @classmethod
+    def property_names(cls) -> dict:
+        """
+        Helper method to return all class attribute names (Table Column Names) back in snake case to access as
+        properties in controller code.
+
+        :return: A list of snake_case property names matching those of the database column names.
+        """
+        # Get all the Column attributes
+        column_names = [name for name in dir(cls) if name[0].isupper()]
+
+        property_names = []
+
+        for name in column_names:
+            # Check to see if the name is an abbreviation i.e. ROT
+            is_all_upper = [1 if letter.isupper() else 0 for letter in name[1:]]
+
+            # If not an abbreviation
+            if min(is_all_upper) == 0:
+                # place a underscore in front of every capital, starting after the first letter.
+                letters = [f"_{letter}" if letter.isupper() else letter for letter in name[1:]]
+                # join the result and lowercase all letters to create snake case format.
+                property_names.append(name[0].lower() + "".join(letters).lower())
+            else:
+                # lower case the abbreviation.
+                property_names.append(name.lower())
+
+        return {column_name: property_name for column_name, property_name in zip(column_names, property_names)}
+
+
 class Unit(Core):
 
     Passengers = Column(Integer, default=0)
     Speed = Column(Integer, default=0)
 
 
-class Infantry(Base, Unit):
-
-    __tablename__ = "infantry"
-
-    C4 = Column(String, default="no")
-    Fraidycat = Column(String, default="no")
-    Infiltrate = Column(String, default="no")
-    IsCanine = Column(String, default="no")
 
 
-class Vehicles(Base, Unit):
-
-    __tablename__ = 'vehicles'
-
-    Crushable = Column(String, default="no")
-    Tracked = Column(String, default="no")
-    NoMovingFire = Column(String, default="no")
 
 
-class Aircraft(Base, Unit):
-
-    __tablename__ = "aircraft"
 
 
-class Ships(Base, Unit):
-
-    __tablename__ = "ships"
 
 
-class Buildings(Base, Core):
 
-    __tablename__ = "buildings"
 
-    BaseNormal = Column(String, default="yes")
-    Adjacent = Column(Integer, default=1)
-    Bib = Column(String, default="no")
-    Capturable = Column(String, default="yes")
-    Crewed = Column(String, default="no")
-    Power = Column(Integer, default=0)
-    Powered = Column(String, default="no")
-    Repairable = Column(String, default="yes")
-    Storage = Column(Integer, default=0)
-    Unsellable = Column(String, default="no")
-    WaterBound = Column(String, default="no")
+
