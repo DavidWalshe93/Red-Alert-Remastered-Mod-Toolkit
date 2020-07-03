@@ -8,6 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from abc import ABC, abstractmethod
+from src.db_driver.db_helper import DBHelper
 
 if TYPE_CHECKING:
     from src.gui.gui import MainWindow
@@ -31,7 +32,14 @@ class Controller(ABC):
         """
         Abstract method used to bind slots in the view.
         """
-        pass
+        self.view.actionCompile.triggered.connect(self.compile)
+
+    def compile(self):
+        try:
+            db_helper = DBHelper()
+            print(db_helper.infantry)
+        except Exception as err:
+            print(err)
 
     @abstractmethod
     def populate_data(self, result: any) -> None:
@@ -41,4 +49,5 @@ class Controller(ABC):
         :param result: The data to use to populate the data.
         """
         pass
+
 

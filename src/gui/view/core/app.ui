@@ -640,7 +640,7 @@
              <item row="5" column="1">
               <widget class="QSpinBox" name="costSpinBox">
                <property name="minimum">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="maximum">
                 <number>10000</number>
@@ -1347,10 +1347,16 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionCompile"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCompile">
+   <property name="text">
+    <string>Compile</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

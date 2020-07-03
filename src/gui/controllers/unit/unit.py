@@ -2,7 +2,7 @@
 Author:     David Walshe
 Date:       03 July 2020
 """
-
+from abc import ABC
 
 from src.gui.controllers.utils import set_checked, is_checked
 from src.gui.controllers.contoller import Controller
@@ -17,10 +17,7 @@ from typing import Union
 UnitType = Union[Aircraft, Infantry, Ships, Vehicles]
 
 
-class UnitController(Controller):
-
-    def bind_slots(self):
-        pass
+class UnitController(Controller, ABC):
 
     def populate_data(self, result: UnitType):
         super().populate_data(result)

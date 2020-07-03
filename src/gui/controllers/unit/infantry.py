@@ -2,16 +2,14 @@
 Author:     David Walshe
 Date:       03 July 2020
 """
+from abc import ABC
 
 from src.gui.controllers.utils import set_checked, is_checked
 from src.gui.controllers.unit.unit import UnitController
 from src.db_driver.models.units.infantry import Infantry
 
 
-class InfantryController(UnitController):
-
-    def bind_slots(self):
-        pass
+class InfantryController(UnitController, ABC):
 
     def populate_data(self, result: Infantry):
         super().populate_data(result)

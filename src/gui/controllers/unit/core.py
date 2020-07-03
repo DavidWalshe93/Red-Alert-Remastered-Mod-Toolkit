@@ -62,6 +62,7 @@ class UnitCoreController(VehiclesController, InfantryController, BuildingsContro
         self.shortcut_open = QtWidgets.QShortcut(QtGui.QKeySequence('Ctrl+S'), self.view)
 
     def bind_slots(self):
+        super().bind_slots()
         self.view.unitTypeComboBox.currentTextChanged.connect(self.populate_units_based_on_type)
         self.view.unitComboBox.currentTextChanged.connect(self.populate_data)
         self.view.c4checkBox.stateChanged.connect(self.c4_disable_dependencies)
