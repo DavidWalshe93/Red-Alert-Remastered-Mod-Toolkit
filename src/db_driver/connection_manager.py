@@ -40,7 +40,7 @@ class ConnectionManager(metaclass=Singleton):
     _engine = None
     Session = None
     _Base = None
-    db_path = environ["RA_DB_LOCATION"]
+    db_path = environ["RA_DB_PATH"]
 
     @classmethod
     def init(cls):

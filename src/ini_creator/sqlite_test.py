@@ -8,7 +8,7 @@ import sqlalchemy as db
 if __name__ == '__main__':
     import sqlalchemy as db
 
-    engine = db.create_engine('sqlite:///../../db/defaults.db')
+    engine = db.create_engine('sqlite:///../../db/red_alert_data.db')
     connection = engine.connect()
 
     metadata = db.MetaData()

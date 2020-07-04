@@ -75,14 +75,14 @@ class Walls(Toolbox):
         ui.moveTo(*self.wall_option_box)
         ui.click()
         ui.moveTo(*self.scroll_down_location)
-        print(self.asset)
-        for i in range(self.option_scroll_count[self.asset]):
-            print(i)
-            ui.click()
-        if self.asset == self.WOODEN_FENCE:
-            ui.moveTo(self.wall_option_alt)
-        else:
-            ui.moveTo(*self.wall_option)
+        # print(self.asset)
+        # for i in range(self.option_scroll_count[self.asset]):
+        #     print(i)
+        #     ui.click()
+        # if self.asset == self.WOODEN_FENCE:
+        #     ui.moveTo(self.wall_option_alt)
+        # else:
+        #     ui.moveTo(*self.wall_option)
 
         ui.click()
 

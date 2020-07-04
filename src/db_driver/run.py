@@ -4,7 +4,7 @@ Date:       29 June 2020
 """
 import os
 
-os.environ["RA_DB_LOCATION"] = "../../db/defaults.db"
+os.environ["RA_DB_LOCATION"] = "../../db/red_alert_data.db"
 
 from src.ini_creator.parser.ini_parser import IniParser
 from src.db_driver.db_manager import DBManager

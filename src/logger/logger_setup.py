@@ -9,8 +9,6 @@ import logging.config
 import yaml
 import os
 
-config_path = os.path.dirname(os.path.abspath(__file__))
-
-with open(os.path.join(config_path, 'logger_config.yaml'), 'r') as f:
-    config = yaml.safe_load(f.read())
+with open(os.environ["RA_LOGGER_CONFIG_PATH"], 'r') as fh:
+    config = yaml.safe_load(fh.read())
     logging.config.dictConfig(config)
