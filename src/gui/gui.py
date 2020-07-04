@@ -12,6 +12,8 @@ from src.db_driver.db_manager import DBManager
 from src.gui.controllers.unit.core import UnitCoreController
 from src.gui.view.app import MainWindow
 
+logger = logging.getLogger(__name__)
+
 
 def run():
     logger.info(f"=" * 100)

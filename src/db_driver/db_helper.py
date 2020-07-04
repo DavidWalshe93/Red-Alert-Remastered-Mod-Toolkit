@@ -14,17 +14,15 @@ from src.db_driver.models.units.aircraft import AircraftCustom, AircraftDefault
 
 class DBHelper(DBManager):
 
+
+
     def __get_change_records(self, default_table, custom_table):
-        default_records = self.all(default_table)
-        custom_records = self.all(custom_table)
+        generator = self.get_comparison_generator(default_table=default_table, custom_table=custom_table)
 
         items = []
-        for custom_record, default_record in zip(custom_records, default_records):
-            default_record = default_record.__dict__
-            custom_record = custom_record.__dict__
-
-            default_record.pop("_sa_instance_state")
-            custom_record.pop("_sa_instance_state")
+        for custom_record, default_record in generator:
+            # default_record.pop("_sa_instance_state")
+            # custom_record.pop("_sa_instance_state")
 
             diff = set(default_record.items()) ^ set(custom_record.items())
             diff = [item[0] for item in diff]
@@ -42,6 +40,21 @@ class DBHelper(DBManager):
         print(items)
 
         return items
+
+    def get_comparison_generator(self, default_table, custom_table):
+        default_records = self.get_records_as_dictionary_list(table=default_table)
+        custom_records = self.get_records_as_dictionary_list(table=custom_table)
+
+        return zip(custom_records, default_records)
+
+    def get_records_as_dictionary_list(self, table):
+        records = self.all(table)
+        records = [record.__dict__ for record in records]
+
+        for idx, record in enumerate(records):
+            record.pop("_sa_instance_state")
+
+        return records
 
     @property
     def buildings(self):
