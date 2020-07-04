@@ -6,10 +6,13 @@ Date:       29 June 2020
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+import logging
 
 from abc import ABC, abstractmethod
 
 from PyQt5 import QtWidgets, QtGui
+
+
 
 from src.db_driver.db_helper import DBHelper
 from src.ini_creator.writer.writer import IniWriter
@@ -17,7 +20,6 @@ from src.db_driver.db_manager import DBManager
 
 if TYPE_CHECKING:
     from src.gui.gui import MainWindow
-
 
 
 class Controller(ABC):
@@ -45,13 +47,14 @@ class Controller(ABC):
         # Hotkeys
         self.compile_shortcut.activated.connect(self.compile)
 
-    def compile(self):
+    @staticmethod
+    def compile():
+        """
+        Compiles current data in the database into an ini file for use in Red Alert.
+        """
         try:
             ini_writer = IniWriter()
             ini_writer.build()
-            # db_helper = DBHelper()
-            #
-            # print(db_helper.infantry)
         except Exception as err:
             print(err)
 
