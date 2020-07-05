@@ -6,15 +6,11 @@ Date:       29 June 2020
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-import logging
 
 from abc import ABC, abstractmethod
 
 from PyQt5 import QtWidgets, QtGui
 
-
-
-from src.db_driver.db_helper import DBHelper
 from src.ini_creator.writer.writer import IniWriter
 from src.db_driver.db_manager import DBManager
 

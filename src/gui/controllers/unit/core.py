@@ -65,7 +65,7 @@ class UnitCoreController(VehiclesController, InfantryController, BuildingsContro
         super().bind_slots()
         self.view.unitTypeComboBox.currentTextChanged.connect(self.populate_units_based_on_type)
         self.view.unitComboBox.currentTextChanged.connect(self.populate_data)
-        self.view.c4checkBox.stateChanged.connect(self.c4_disable_dependencies)
+        self.view.c4checkBox.stateChanged.connect(self.view.c4_adjust_dependencies)
         self.view.saveButton.clicked.connect(self.update_model)
         self.view.defaultsButton.clicked.connect(self.set_defaults)
 
@@ -193,12 +193,6 @@ class UnitCoreController(VehiclesController, InfantryController, BuildingsContro
             "ships": ShipsDefault,
             "vehicles": VehiclesDefault
         }.get(key, None)
-
-    def c4_disable_dependencies(self):
-        if self.c4 == "yes":
-            self.view.infiltrateCheckBox.setEnabled(False)
-        else:
-            self.view.infiltrateCheckBox.setEnabled(True)
 
     def populate_data(self, result: None = None):
         if len(self.view.unitComboBox.currentText().strip()) != 0:
