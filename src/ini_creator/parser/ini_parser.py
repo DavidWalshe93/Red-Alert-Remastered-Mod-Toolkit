@@ -101,7 +101,7 @@ if __name__ == '__main__':
     cfg_parser = ConfigParser(allow_no_value=True)
 
     # with open("./../../../default_rules.ini") as fh:
-    cfg_parser.read("./../../../default_rules.ini")
+    cfg_parser.read("./../../../res/raw/country_statistics.ini")
 
     for section in cfg_parser.sections():
         pprint.pprint(ConfigSectionMap(section, cfg_parser))

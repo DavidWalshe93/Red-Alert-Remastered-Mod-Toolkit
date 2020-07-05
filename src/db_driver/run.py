@@ -4,7 +4,7 @@ Date:       29 June 2020
 """
 import os
 
-os.environ["RA_DB_LOCATION"] = "../../db/red_alert_data.db"
+os.environ["RA_DB_PATH"] = "../../../db/red_alert_data.db"
 
 from src.ini_creator.parser.ini_parser import IniParser
 from src.db_driver.db_manager import DBManager
@@ -16,22 +16,23 @@ from src.db_driver.models.units.vehicles import VehiclesDefault, VehiclesCustom
 
 
 def add_data(file_name: str, table_cls):
-    db = DBManager()
+    # db = DBManager()
     parser = IniParser()
     data = parser.parse(file_name)
-    for item in data:
-        db.create(table_cls=table_cls, data=item)
-    print(db.all(table_cls))
+    print(data)
+    # for item in data:
+    #     db.create(table_cls=table_cls, data=item)
+    # print(db.all(table_cls))
 
 
 def main():
-    db = DBManager()
-    try:
-        pass
-        db.drop_all()
-        db.init_tables()
-    except:
-        print("Issue")
+    # db = DBManager()
+    # try:
+    #     pass
+    #     db.drop_all()
+    #     db.init_tables()
+    # except:
+    #     print("Issue")
 
     add_data("buildings.ini", BuildingsDefault)
     add_data("buildings.ini", BuildingsCustom)
