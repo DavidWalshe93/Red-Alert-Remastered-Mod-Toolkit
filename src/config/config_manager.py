@@ -35,7 +35,7 @@ class ConfigManager(metaclass=Singleton):
             with open(os.environ["RA_USER_CONFIG_PATH"], "r") as fh:
                 self.config = json.load(fh)
         except FileNotFoundError as err:
-            logger.error(f"Cannot read user config file.\n{err}")
+            logger.error(f"Cannot read user config file.\n\t{err}")
 
     def save_config(self):
         """
@@ -46,7 +46,7 @@ class ConfigManager(metaclass=Singleton):
                 with open(os.environ["RA_USER_CONFIG_PATH"], "w") as fh:
                     json.dump(self.config, fh, indent=4)
             except OSError as err:
-                logger.error(f"Cannot write to user config file.\n{err}")
+                logger.error(f"Cannot write to user config file.\n\t{err}")
 
     def get_config(self, key) -> any:
         """

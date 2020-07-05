@@ -13,6 +13,7 @@ from PyQt5 import QtWidgets, QtGui
 
 from src.ini_creator.writer.writer import IniWriter
 from src.db_driver.db_manager import DBManager
+from src.config.config_manager import ConfigManager
 
 if TYPE_CHECKING:
     from src.gui.gui import MainWindow
@@ -29,6 +30,7 @@ class Controller(ABC):
         """
         self.view = view
         self.model = DBManager()
+        self.config_manager = ConfigManager()
 
         self.compile_shortcut = QtWidgets.QShortcut(QtGui.QKeySequence('Alt+C'), self.view)
 
@@ -47,7 +49,8 @@ class Controller(ABC):
         """
         Compiles current data in the database into an ini file for use in Red Alert.
         """
-        self.showDialog()
+        if self.config_manager.map_directory is None:
+            self.showDialog()
         try:
             ini_writer = IniWriter()
             ini_writer.build()
@@ -65,18 +68,9 @@ class Controller(ABC):
 
     def showDialog(self):
         try:
-            from pathlib import Path
-            from src.config.config_manager import ConfigManager
-            home_dir = ConfigManager().map_directory
-            print(home_dir)
+            home_dir = self.config_manager.map_directory
             dir_name = QtWidgets.QFileDialog.getExistingDirectory(self.view, "Select map dir", home_dir)
-            ConfigManager().map_directory = dir_name
-            # if fname[0]:
-            #     f = open(fname[0], 'r')
-            #
-            #     with f:
-            #         data = f.read()
-            #         print(data)
+            self.config_manager.map_directory = dir_name
         except Exception as err:
             print(err)
 

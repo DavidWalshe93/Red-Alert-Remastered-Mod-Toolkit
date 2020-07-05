@@ -91,6 +91,9 @@
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="baseNormalCheckBox">
+                 <property name="toolTip">
+                  <string>Considered for building adjacency checks (def=yes)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -105,6 +108,9 @@
                </item>
                <item row="1" column="1">
                 <widget class="QSpinBox" name="adjacentSpinBox">
+                 <property name="toolTip">
+                  <string>Distance allowed to place from other buildings (def=1)</string>
+                 </property>
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -119,6 +125,9 @@
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="bibCheckBox">
+                 <property name="toolTip">
+                  <string>Should the building have an attached bib (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -133,6 +142,9 @@
                </item>
                <item row="3" column="1">
                 <widget class="QCheckBox" name="capturableCheckBox">
+                 <property name="toolTip">
+                  <string>Can this building be infiltrated by a spy/engineer (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -147,6 +159,9 @@
                </item>
                <item row="4" column="1">
                 <widget class="QCheckBox" name="crewedCheckBox">
+                 <property name="toolTip">
+                  <string>Does it contain a crew that can escape (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -161,6 +176,9 @@
                </item>
                <item row="5" column="1">
                 <widget class="QSpinBox" name="powerSpinBox">
+                 <property name="toolTip">
+                  <string>Power output [positive for output, negative for drain] (def=0)</string>
+                 </property>
                  <property name="minimum">
                   <number>-20000</number>
                  </property>
@@ -181,6 +199,9 @@
                </item>
                <item row="6" column="1">
                 <widget class="QCheckBox" name="poweredCheckBox">
+                 <property name="toolTip">
+                  <string>Does it require power to function (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -195,6 +216,9 @@
                </item>
                <item row="7" column="1">
                 <widget class="QCheckBox" name="repairableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be repaired (def=yes)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -219,6 +243,9 @@
                </item>
                <item row="9" column="1">
                 <widget class="QCheckBox" name="unsellableCheckBox">
+                 <property name="toolTip">
+                  <string>Cannot sell this building (even if it can be built)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -233,6 +260,9 @@
                </item>
                <item row="10" column="1">
                 <widget class="QCheckBox" name="waterBoundCheckBox">
+                 <property name="toolTip">
+                  <string>Is this building placed on water only (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -240,6 +270,9 @@
                </item>
                <item row="8" column="1">
                 <widget class="QSpinBox" name="storageSpinBox">
+                 <property name="toolTip">
+                  <string>The number of credits this building can store (def=0)</string>
+                 </property>
                  <property name="maximum">
                   <number>10000</number>
                  </property>
@@ -283,6 +316,9 @@
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="c4checkBox">
+                 <property name="statusTip">
+                  <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -303,6 +339,9 @@
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="fraidycatCheckBox">
+                 <property name="statusTip">
+                  <string>Is it inherently afraid and will panic easily (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -320,6 +359,9 @@
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="infiltrateCheckBox">
+                 <property name="statusTip">
+                  <string>Can it enter a building like a spy or thief (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -330,6 +372,9 @@
                </item>
                <item row="3" column="1">
                 <widget class="QCheckBox" name="isCanineCheckBox">
+                 <property name="statusTip">
+                  <string>Should special case dog logic be applied to this?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -380,6 +425,9 @@
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="crushableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be crushed by a heavy tracked vehicle (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -394,6 +442,9 @@
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="trackedCheckBox">
+                 <property name="toolTip">
+                  <string>Is this vehicle tracked [as opposed to wheeled] (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -408,6 +459,9 @@
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="noMovingFireCheckBox">
+                 <property name="toolTip">
+                  <string>The vehicle must stop before it can fire (def=no)?</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -460,6 +514,15 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>Number of passengers it may carry (def=0)</string>
+                 </property>
+                 <property name="statusTip">
+                  <string/>
+                 </property>
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -474,6 +537,9 @@
                </item>
                <item row="1" column="1">
                 <widget class="QSpinBox" name="speedSpinBox">
+                 <property name="toolTip">
+                  <string>Speed of this object (def=0)</string>
+                 </property>
                  <property name="maximum">
                   <number>50</number>
                  </property>
@@ -528,6 +594,9 @@
              </item>
              <item row="0" column="1">
               <widget class="QComboBox" name="unitTypeComboBox">
+               <property name="toolTip">
+                <string>Select the unit or structure class type to edit.</string>
+               </property>
                <item>
                 <property name="text">
                  <string>Infantry</string>
@@ -563,7 +632,11 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QComboBox" name="unitComboBox"/>
+              <widget class="QComboBox" name="unitComboBox">
+               <property name="toolTip">
+                <string>Select the unit or structure to edit.</string>
+               </property>
+              </widget>
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="ammoLabel">
@@ -574,6 +647,16 @@
              </item>
              <item row="2" column="1">
               <widget class="QSpinBox" name="ammoSpinBox">
+               <property name="toolTip">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Number of rounds carried between reloads [-1 means unlimited] (def=-1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="whatsThis">
+                <string>Hey There</string>
+               </property>
                <property name="minimum">
                 <number>-1</number>
                </property>
@@ -595,7 +678,7 @@
              <item row="3" column="1">
               <widget class="QComboBox" name="armorComboBox">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;none - No Armor&lt;/p&gt;&lt;p&gt;wood - Weak Armor&lt;/p&gt;&lt;p&gt;light - Medium Armor&lt;/p&gt;&lt;p&gt;heavy - Strong Armor&lt;/p&gt;&lt;p&gt;concrete - Very Strong Armor&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The armor type of this object [&lt;/p&gt;&lt;p&gt;	none (0),&lt;/p&gt;&lt;p&gt;	wood (1),&lt;/p&gt;&lt;p&gt;	light (2),&lt;/p&gt;&lt;p&gt;	heavy, (3)&lt;/p&gt;&lt;p&gt;	concrete (4)&lt;/p&gt;&lt;p&gt;] (def=none)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <item>
                 <property name="text">
@@ -638,6 +721,9 @@
                  <pointsize>19</pointsize>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>Is it equipped with a cloaking device (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -652,6 +738,9 @@
              </item>
              <item row="5" column="1">
               <widget class="QSpinBox" name="costSpinBox">
+               <property name="toolTip">
+                <string>Cost to build object (in credits)</string>
+               </property>
                <property name="minimum">
                 <number>0</number>
                </property>
@@ -675,6 +764,9 @@
              </item>
              <item row="6" column="1">
               <widget class="QCheckBox" name="doubleOwnedCheckBox">
+               <property name="toolTip">
+                <string>Can be built/owned by all countries in a multiplayer game (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -689,6 +781,9 @@
              </item>
              <item row="7" column="1">
               <widget class="QCheckBox" name="explodesCheckBox">
+               <property name="toolTip">
+                <string>Does it explode violently when destroyed [i.e., does it do collateral damage] (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -703,6 +798,9 @@
              </item>
              <item row="8" column="1">
               <widget class="QSpinBox" name="guardRangeSpinBox">
+               <property name="toolTip">
+                <string>Distance to scan for enemies to attack (def=use weapon range)</string>
+               </property>
                <property name="minimum">
                 <number>-1</number>
                </property>
@@ -722,7 +820,11 @@
               </widget>
              </item>
              <item row="9" column="1">
-              <widget class="QComboBox" name="imageComboBox"/>
+              <widget class="QComboBox" name="imageComboBox">
+               <property name="toolTip">
+                <string>Name of graphic data to use for this object (def=same as object identifier)</string>
+               </property>
+              </widget>
              </item>
              <item row="10" column="0">
               <widget class="QLabel" name="invisibleLabel">
@@ -733,6 +835,9 @@
              </item>
              <item row="10" column="1">
               <widget class="QCheckBox" name="invisibleCheckBox">
+               <property name="toolTip">
+                <string>Is completely and always invisible to enemy (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -747,6 +852,9 @@
              </item>
              <item row="11" column="1">
               <widget class="QComboBox" name="ownerComboBox">
+               <property name="toolTip">
+                <string>Who can build this [Allies or Soviet] (def=&quot;allies,soviet&quot;, i.e., all)</string>
+               </property>
                <item>
                 <property name="text">
                  <string>allies,soviet</string>
@@ -773,6 +881,9 @@
              </item>
              <item row="12" column="1">
               <widget class="QSpinBox" name="pointsSpinBox">
+               <property name="toolTip">
+                <string>Point value for scoring purposes (def=0)</string>
+               </property>
                <property name="maximum">
                 <number>1000</number>
                </property>
@@ -790,6 +901,9 @@
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="toolTip">
+                <string>List of extra needed before this can be manufactured (def=no requirement)</string>
+               </property>
               </widget>
              </item>
              <item row="14" column="0">
@@ -801,6 +915,9 @@
              </item>
              <item row="14" column="1">
               <widget class="QComboBox" name="primaryComboBox">
+               <property name="toolTip">
+                <string>Primary weapon equipped with (def=none)</string>
+               </property>
                <item>
                 <property name="text">
                  <string>Colt45</string>
@@ -997,6 +1114,9 @@
              </item>
              <item row="15" column="1">
               <widget class="QComboBox" name="secondaryComboBox">
+               <property name="toolTip">
+                <string>Secondary weapon equipped with (def=none)</string>
+               </property>
                <item>
                 <property name="text">
                  <string>Colt45</string>
@@ -1198,6 +1318,9 @@
              </item>
              <item row="16" column="1">
               <widget class="QSpinBox" name="rotSpinBox">
+               <property name="toolTip">
+                <string>Rate Of Turn for body (if present) and turret (if present) (def=0)</string>
+               </property>
                <property name="maximum">
                 <number>10</number>
                </property>
@@ -1211,7 +1334,11 @@
               </widget>
              </item>
              <item row="17" column="1">
-              <widget class="QSpinBox" name="reloadSpinBox"/>
+              <widget class="QSpinBox" name="reloadSpinBox">
+               <property name="toolTip">
+                <string>Time delay between reloads (def=0)</string>
+               </property>
+              </widget>
              </item>
              <item row="18" column="0">
               <widget class="QLabel" name="selfHealingLabel">
@@ -1222,6 +1349,9 @@
              </item>
              <item row="18" column="1">
               <widget class="QCheckBox" name="selfHealingCheckBox">
+               <property name="toolTip">
+                <string>Does the object heal automatically up to half strength (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -1236,6 +1366,9 @@
              </item>
              <item row="19" column="1">
               <widget class="QSpinBox" name="sightSpinBox">
+               <property name="toolTip">
+                <string>Sight range, in cells (def=1)</string>
+               </property>
                <property name="maximum">
                 <number>20</number>
                </property>
@@ -1253,6 +1386,9 @@
              </item>
              <item row="20" column="1">
               <widget class="QSpinBox" name="healthSpinBox">
+               <property name="statusTip">
+                <string>Health of this object (aka Strength in .ini file)</string>
+               </property>
                <property name="minimum">
                 <number>1</number>
                </property>
@@ -1270,6 +1406,9 @@
              </item>
              <item row="21" column="1">
               <widget class="QSpinBox" name="techLevelSpinBox">
+               <property name="statusTip">
+                <string>Tech level required to build this [-1 means can't build] (def=-1)</string>
+               </property>
                <property name="minimum">
                 <number>-1</number>
                </property>
@@ -1290,6 +1429,9 @@
              </item>
              <item row="22" column="1">
               <widget class="QCheckBox" name="sensorsCheckBox">
+               <property name="statusTip">
+                <string>Has sensors to detect nearby cloaked objects (def=no)?</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -1335,11 +1477,6 @@
            </widget>
           </item>
          </layout>
-        </widget>
-        <widget class="QWidget" name="tab_2">
-         <attribute name="title">
-          <string>Tab 2</string>
-         </attribute>
         </widget>
        </widget>
       </item>
