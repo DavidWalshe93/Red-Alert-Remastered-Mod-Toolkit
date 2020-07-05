@@ -10,7 +10,7 @@ class Buildings(Core):
     BaseNormal = Column(String, default="yes")
     Adjacent = Column(Integer, default=1)
     Bib = Column(String, default="no")
-    Capturable = Column(String, default="yes")
+    Capturable = Column(String, default="no")
     Crewed = Column(String, default="no")
     Power = Column(Integer, default=0)
     Powered = Column(String, default="no")

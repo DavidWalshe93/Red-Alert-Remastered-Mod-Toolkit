@@ -4,7 +4,7 @@ Date:       03 July 2020
 """
 from abc import ABC
 
-from src.gui.controllers.utils import set_checked, is_checked
+from src.gui.controllers.utils import set_checked, is_checked, is_checked_true
 from src.gui.controllers.contoller import Controller
 from src.db_driver.models.units.buildings import Buildings
 
@@ -52,7 +52,7 @@ class BuildingsController(Controller, ABC):
 
     @property
     def capturable(self):
-        return is_checked(self.view.capturableCheckBox)
+        return is_checked_true(self.view.capturableCheckBox)
 
     @capturable.setter
     def capturable(self, value: Buildings):

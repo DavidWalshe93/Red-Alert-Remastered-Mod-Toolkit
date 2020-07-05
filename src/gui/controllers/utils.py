@@ -21,6 +21,18 @@ def is_checked(checkbox: QtWidgets.QCheckBox):
     return "yes" if checkbox.isChecked() else "no"
 
 
+def is_checked_true(checkbox: QtWidgets.QCheckBox):
+    """
+    Helper method to translate a boolean value from True/False to a true/no equivalent.
+
+    Special case for building -> Capturable field
+
+    :param checkbox: The checkbox instance to translate.
+    :return: A string representation (true/no) of a boolean value (True/False).
+    """
+    return "true" if checkbox.isChecked() else "no"
+
+
 def set_checked(value) -> bool:
     """
     Helper method to translate a database value of yes/no to its boolean equivalent.
@@ -28,4 +40,4 @@ def set_checked(value) -> bool:
     :param value: The value to translate.
     :return: A bool representing True (yes) or False (no)
     """
-    return True if value.lower() == "yes" else False
+    return True if value.lower() in ["yes", "true"] else False
