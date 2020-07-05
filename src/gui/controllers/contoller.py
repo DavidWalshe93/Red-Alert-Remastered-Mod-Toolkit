@@ -42,12 +42,13 @@ class Controller(ABC):
         """
         Abstract method used to bind slots in the view.
         """
-        # Bindings
         self.view.actionCompile.triggered.connect(self.compile)
 
     @abstractmethod
     def bind_shortcuts(self) -> None:
-        # Hotkeys
+        """
+        Abstract method used to bind shortcuts to the view.
+        """
         self.compile_shortcut.activated.connect(self.compile)
 
     def compile(self):
@@ -84,5 +85,3 @@ class Controller(ABC):
         except Exception as err:
             logger.info(f"Map Directory Dialog Error\n\t"
                         f"{err}")
-
-

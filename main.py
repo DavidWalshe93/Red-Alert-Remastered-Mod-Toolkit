@@ -25,7 +25,6 @@ if __name__ == '__main__':
     # Register exit handlers.
     import atexit
     config_manager = ConfigManager()
-    # config_manager.map_directory = "Hi There"
 
     atexit.register(config_manager.save_config)
 

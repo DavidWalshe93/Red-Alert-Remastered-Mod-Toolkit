@@ -9,6 +9,7 @@
     - [Compiling Mods with Custom Maps](#compiling-mods-with-custom-maps)
     - [Unit and Structure Editing](#unit-and-structure-editing)
 - [Issues](#issues)
+- [Change Log](#change-log)
 
 # Introduction
 
@@ -26,7 +27,7 @@ with 24 years later, along with my brothers and cousins who were also captivated
 
 As a tribute to all those late hour sessions watching Red Alert in the 90's and the new found love for the remastered edition, I 
 have built a small application unlocking a lot of the mod-ability of Red Alert. The app is not targeted towards
-**power-users** who are well versed in the art of making **nurple maps**. The application is aimed more at casual gamers
+**power-users**, who are well versed in the art of making **nurple maps**. The application is aimed more at casual gamers
 who want to adjust various mechanics of the game for **single-player skirmish** and **multi-player custom maps** without
 messing with .ini files manually.
 
@@ -159,3 +160,20 @@ The first tab in the GUI is targeted at units and structure editing.
 # Issues
 
 [Back to top](#table-of-contents)
+
+
+# Change Log
+
+[Back to top](#table-of-contents)
+
+## v0.2.0 - alpha
+
+### Features
+
+### Bug Fixes
+- Game crash bug caused by the presence of in the generated .mpr mod file.
+- Modified fields now update highlight on selection where they previously looked like the default value was present. 
+
+## v0.1.0 - alpha
+
+- Initial public release

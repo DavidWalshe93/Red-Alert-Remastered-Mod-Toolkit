@@ -14,3 +14,5 @@ class View(Ui_MainWindow, QMainWindow):
         Abstract base for all views in the application.
         """
         super().__init__(*args, **kwargs)
+        self.DEFAULT_STYLE = "QLabel { background-color : black; color : white; font-size: 12px; }"
+        self.DIFFERENT_STYLE = "QLabel {  background-color : white; color : black; font-size: 12px; }"

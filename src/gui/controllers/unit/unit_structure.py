@@ -70,50 +70,91 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
         self.view.defaultsButton.clicked.connect(self.set_defaults)
 
     def bind_shortcuts(self) -> None:
+        """
+        Bind all shortcut hot-keys to the GUI.
+        """
         super().bind_shortcuts()
         self.shortcut_open.activated.connect(self.update_model)
 
-    def populate_units_based_on_type(self):
+    def populate_units_based_on_type(self) -> None:
+        """
+        Populates the units field in the GUI.
+        """
+        # Get the table selected.
         key = self.type_selection
         self.table = self.get_custom_table(key)
+
+        # Update the combobox with the fields associated with the table selected.
         items = self.model.all_ordered_by(self.table, self.table.Name)
         self.view.unitComboBox.clear()
         for i in items:
             self.view.unitComboBox.addItem(i.Name)
 
-        self.update_change_highlight()
-
+        # Update the view options based on the current state.
         self.view.update_options(key)
 
-    def update_model(self):
+    def update_model(self) -> None:
+        """
+        Saves the current data on the view to the database.
+        """
         try:
-            item = self.model.query_first(self.table, Name=self.name)
+            # Query the database for the current selected item.
+            result = self.model.query_first(self.table, Name=self.name)
+            # Get the property names associate with the item.
             name_mapping: dict = self.table.property_names()
+
             for column_name, property_name in name_mapping.items():
                 if column_name not in ["Id", "Tag"]:
                     try:
-                        item.__setattr__(column_name, self.__getattribute__(property_name))
+                        # Set the attributes of the result to the current selected states of the GUI.
+                        result.__setattr__(column_name, self.__getattribute__(property_name))
                     except Exception as err:
                         raise err
-            self.model.update(item)
-            logger.info(f"Successfully updated {name_mapping['Name']} with ")
-            self.update_change_highlight()
-        except Exception as err:
-            logger.error(f"Could not update model - {err}")
 
-    def set_defaults(self):
-        names = self.check_custom_vs_defaults()
-        try:
-            default, custom = self.get_current_data()
-            for name in names:
-                custom.__setattr__(name, default.__getattribute__(name))
-            self.model.update(custom)
-            self.populate_data()
-            self.update_model()
+            # Pass the result back to be updated in the database.
+            self.model.update(result)
+
+            logger.info(f"Successfully updated '{self.name}'")
+
+            # Highlight values that differ from the default.
+            self.show_difference_highlighting()
+
         except Exception as err:
-            logger.error(f"{err}")
+            logger.error(f"Could not update model item '{self.name}' - {err}")
+
+    def show_difference_highlighting(self):
+        """
+        Update the view to show the difference between defaults and custom settings.
+        """
+        names = self.check_custom_vs_defaults()
+        label_names = self.__get_label_names()
+        self.view.show_differences(label_names, names)
+
+    def __get_label_names(self) -> dict:
+        """
+        Gets a list of property names matching the table fields. Removes non GUI related fields.
+
+        :return: A dict of property label names.
+        """
+        label_names: dict = self.table.property_names()
+
+        # Remove non GUI related fields
+        label_names.pop("Id")
+        label_names.pop("Name")
+        label_names.pop("Tag")
+
+        # Adjust naming for some fields.
+        label_names.update({"rot": label_names.pop("ROT")})
+
+        return label_names
 
     def get_current_data(self, remove_instance_data: bool = False) -> tuple:
+        """
+        Gets the default and custom data dictionaries for the selected table.
+
+        :param remove_instance_data: Flag to remove instance data fields.
+        :return: A tuple of default and custom data dictionaries.
+        """
         # Get current table from both default and custom.
         default_table = self.get_defaults_table(self.type_selection)
         custom_table = self.get_custom_table(self.type_selection)
@@ -129,8 +170,29 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
 
         return default, custom
 
-    def check_custom_vs_defaults(self) -> list:
+    def set_defaults(self) -> None:
+        """
+        Resets the view and custom model back to defaults.
+        """
+        names = self.check_custom_vs_defaults()
+        try:
+            default, custom = self.get_current_data()
+            for name in names:
+                custom.__setattr__(name, default.__getattribute__(name))
 
+            # Persist the defaults to the custom database.
+            self.model.update(custom)
+            self.populate_data()
+            self.update_model()
+        except Exception as err:
+            logger.error(f"{err}")
+
+    def check_custom_vs_defaults(self) -> list:
+        """
+        Checks the custom vs the default dictionary to see if they are different.
+
+        :return: The names of the items that are different.
+        """
         default, custom = self.get_current_data(remove_instance_data=True)
 
         names = []
@@ -145,22 +207,6 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
                 names.append(item[0])
 
         return list(set(names))
-
-    def update_change_highlight(self):
-        names = self.check_custom_vs_defaults()
-        label_names: dict = self.table.property_names()
-        label_names.pop("Id")
-        label_names.pop("Name")
-        label_names.pop("Tag")
-
-        label_names.update({"rot": label_names.pop("ROT")})
-        for label in label_names.keys():
-            object_name = f"{label[0].lower()}{label[1:]}Label"
-
-            if label in names:
-                self.view.__getattribute__(f"{object_name}").setStyleSheet("QLabel { background-color : black; color : white; font-size: 12px; }")
-            else:
-                self.view.__getattribute__(f"{object_name}").setStyleSheet("QLabel {  background-color : white; color : black; font-size: 12px; }")
 
     @non_none_return_value
     def get_custom_table(self, key):
@@ -196,13 +242,31 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
             "vehicles": VehiclesDefault
         }.get(key, None)
 
-    def populate_data(self, result: None = None):
-        if len(self.view.unitComboBox.currentText().strip()) != 0:
-            result: UnitStructureType = self.model.query(self.table, Name=self.view.unitComboBox.currentText())[0]
+    def populate_data(self, result: None = None) -> None:
+        """
+        Populates the data into the view from the model.
+
+        :param result: The result to fill the model with data with.
+        """
+        selected_unit = self.view.unitComboBox.currentText()
+        exclusion_list = ["name"]
+
+        if len(selected_unit.strip()) != 0:
+
+            # Get the first result of the given query. Should only equal one as Name is a unique field.
+            result: UnitStructureType = self.model.query_first(self.table, Name=selected_unit)
             super().populate_data(result)
+
+            # Assign the model data to the view.
             for prop_name in self.table.property_names().values():
                 try:
                     self.__setattr__(prop_name, result)
                 except AttributeError as err:
-                    if prop_name not in ["name"]:
+
+                    # If the prop_name isn't part of the know exclusion list, throw an error.
+                    if prop_name not in exclusion_list:
+                        logger.error(f"{err}")
                         raise err
+
+            # Highlight fields that are different to the default.
+            self.show_difference_highlighting()

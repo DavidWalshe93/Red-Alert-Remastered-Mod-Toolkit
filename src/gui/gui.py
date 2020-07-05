@@ -16,16 +16,20 @@ logger = logging.getLogger(__name__)
 
 
 def run():
-    logger.info(f"=" * 100)
-    logger.info("Application launched")
-
-    app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-
-    # Setup controllers with view.
-    unit_controller = UnitStructureController(window)
-    unit_controller.bind_slots()
-    unit_controller.bind_shortcuts()
-
-    app.exec_()
+    try:
+        logger.info(f"=" * 100)
+        logger.info("Application launched")
+    
+        app = QtWidgets.QApplication(sys.argv)
+        window = MainWindow()
+        window.show()
+    
+        # Setup controllers with view.
+        unit_controller = UnitStructureController(window)
+        unit_controller.bind_slots()
+        unit_controller.bind_shortcuts()
+    
+        app.exec_()
+    except Exception as err:
+        logger.error(f"{err}")
+        raise err

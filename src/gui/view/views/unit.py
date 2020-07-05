@@ -8,6 +8,15 @@ from src.gui.view.view import View
 
 class UnitStructureView(View):
 
+    def show_differences(self, label_names: dict, names: list):
+        for label in label_names.keys():
+            object_name = f"{label[0].lower()}{label[1:]}Label"
+
+            if label in names:
+                self.__getattribute__(f"{object_name}").setStyleSheet(self.DEFAULT_STYLE)
+            else:
+                self.__getattribute__(f"{object_name}").setStyleSheet(self.DIFFERENT_STYLE)
+
     def c4_adjust_dependencies(self, c4_checkbox_state) -> None:
         """
         Updates Infiltrate field depending on state of C4 as there is a cross dependency.

@@ -31,10 +31,10 @@ class CoreController(Controller, ABC):
         :param obj: The object to check.
         :return: True if it is an instance of a Unit class, False otherwise
         """
-        return isinstance(obj, (Aircraft, Infantry, Buildings, Vehicles))
+        return isinstance(obj, (Aircraft, Infantry, Ships, Vehicles))
 
     @staticmethod
-    def is_building(obj):
+    def is_building(obj) -> bool:
         """
         Checks if the object passed is an instance of a Building class.
 
