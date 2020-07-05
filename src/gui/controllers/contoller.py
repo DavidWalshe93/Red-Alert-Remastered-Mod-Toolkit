@@ -43,11 +43,11 @@ class Controller(ABC):
         # Hotkeys
         self.compile_shortcut.activated.connect(self.compile)
 
-    @staticmethod
-    def compile():
+    def compile(self):
         """
         Compiles current data in the database into an ini file for use in Red Alert.
         """
+        self.showDialog()
         try:
             ini_writer = IniWriter()
             ini_writer.build()
@@ -62,5 +62,22 @@ class Controller(ABC):
         :param result: The data to use to populate the data.
         """
         pass
+
+    def showDialog(self):
+        try:
+            from pathlib import Path
+            from src.config.config_manager import ConfigManager
+            home_dir = ConfigManager().map_directory
+            print(home_dir)
+            dir_name = QtWidgets.QFileDialog.getExistingDirectory(self.view, "Select map dir", home_dir)
+            ConfigManager().map_directory = dir_name
+            # if fname[0]:
+            #     f = open(fname[0], 'r')
+            #
+            #     with f:
+            #         data = f.read()
+            #         print(data)
+        except Exception as err:
+            print(err)
 
 

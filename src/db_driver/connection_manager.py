@@ -11,26 +11,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+from src.utils.singleton import Singleton
+
 Base = declarative_base()
-
-
-class Singleton(type):
-    """
-    Singleton design pattern used to limit possible database instances to one.
-    """
-
-    _instances: dict = {}
-
-    def __call__(cls, *args, **kwargs):
-        """
-        Returns a new or existing class object depending on whether or not it was created previously.
-
-        :return: The requested objects sole instance.
-        """
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-
-        return cls._instances[cls]
 
 
 class ConnectionManager(metaclass=Singleton):
@@ -40,7 +23,7 @@ class ConnectionManager(metaclass=Singleton):
     _engine = None
     Session = None
     _Base = None
-    db_path = environ["RA_DB_PATH"]
+    db_path = None
 
     @classmethod
     def init(cls):
@@ -51,16 +34,7 @@ class ConnectionManager(metaclass=Singleton):
         Initialisation only takes place if "ConnectionManager._engine" is None, otherwise nothing happens.
         """
         if cls._engine is None:
-            print(f"config (BAD): {ConnectionManager.db_path}")
-            if ConnectionManager.db_path is not None:
-                pass
-            elif environ.get("RA_DB_PATH", None) is None:
-                print("Using in-memory database", file=stderr)
-                ConnectionManager.db_path =  ":memory:"
-                # raise ValueError("Database path was not set")
-            elif ConnectionManager.db_path == ":memory:":
-                pass
-
+            cls.db_path = environ["RA_DB_PATH"]
             cls._engine = create_engine(f"sqlite:///{cls.db_path}")
             cls.Session = sessionmaker(bind=cls._engine, expire_on_commit=False)
             cls._Base = declarative_base()

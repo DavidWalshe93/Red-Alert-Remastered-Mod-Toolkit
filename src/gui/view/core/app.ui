@@ -1361,6 +1361,7 @@
      <string>File</string>
     </property>
     <addaction name="actionCompile"/>
+    <addaction name="actionSelectMapFolder"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -1378,6 +1379,11 @@
    </property>
    <property name="shortcut">
     <string/>
+   </property>
+  </action>
+  <action name="actionSelectMapFolder">
+   <property name="text">
+    <string>Select Map Folder</string>
    </property>
   </action>
  </widget>

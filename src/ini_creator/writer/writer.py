@@ -3,13 +3,19 @@ Author:     David Walshe
 Date:       03 July 2020
 """
 
+import os
+import logging
 
 from configparser import ConfigParser
 
 from src.db_driver.helpers.db_helper import DBHelper
 
+logger = logging.getLogger(__name__)
+
 
 class IniWriter:
+
+    FILE_NAME = "output.ini"
 
     def __init__(self):
         self.model = DBHelper()
@@ -23,8 +29,10 @@ class IniWriter:
         self.add(self.model.aircraft)
         self.add(self.model.ships)
 
-        with open("output.ini", "w") as fh:
+        with open(IniWriter.FILE_NAME, "w") as fh:
             self.writer.write(fh)
+
+        logger.info(f".INI file created @ {os.path.join(os.getcwd(), IniWriter.FILE_NAME)}")
 
     def add(self, data: list):
         for item in data:
@@ -35,7 +43,8 @@ class IniWriter:
             self.writer.set(section, f"; {comment}")
             for key, value in item.items():
                 try:
-                    print(key, value)
                     self.writer.set(section, key, str(value))
                 except Exception as err:
                     print(err)
+        
+

@@ -16,7 +16,6 @@ class IniParser:
         self.content = []
         self.unit_data = []
 
-
     def read_content(self, file_name: str):
         with open(f"../../res/raw/unit_statistics/{file_name}") as fh:
             self.content = fh.read().split("\n\n")
