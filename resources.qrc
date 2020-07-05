@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>res/icons/compile.ico</file>
+    <file>res/icons/app_icon.ico</file>
+  </qresource>
+</RCC>
