@@ -53,6 +53,8 @@ class IniParser:
         for section in self.config_parser.sections():
             self._data.append(self.parse_data(section))
 
+        return self.data
+
     @property
     def parser(self):
         config_parser = ConfigParser()
@@ -68,7 +70,8 @@ class IniParser:
         :return: The data being parsed.
         """
         data = self.get_section_data(section)
-        data["Name"] = section
+        if data.get("Name", None) is None:
+            data["Name"] = section
         data["Tag"] = section
 
         data = self.cast_numerics(data)
@@ -77,6 +80,12 @@ class IniParser:
 
     @staticmethod
     def cast_numerics(data: dict) -> dict:
+        """
+        Casts int and float strings to their numeric values.
+
+        :param data: The data element currently being parsed.
+        :return: The data element with all numeric string values cast to numerics.
+        """
         for key, value in data.items():
             try:
                 value = float(value)
