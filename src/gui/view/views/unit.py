@@ -8,6 +8,14 @@ from src.gui.view.view import View
 
 class UnitStructureView(View):
 
+    def c4_adjust_dependencies(self, checkbox_state):
+        print(checkbox_state)
+        if checkbox_state > 0:
+            self.infiltrateCheckBox.setChecked(True)
+            self.infiltrateCheckBox.setEnabled(False)
+        else:
+            self.infiltrateCheckBox.setEnabled(True)
+
     def disable_options(self):
         self.unitsGroupBox.setDisabled(True)
         self.infantryGroupBox.setDisabled(True)
