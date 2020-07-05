@@ -6,7 +6,7 @@ Date:       03 July 2020
 
 from configparser import ConfigParser
 
-from src.db_driver.db_helper import DBHelper
+from src.db_driver.helpers.db_helper import DBHelper
 
 
 class IniWriter:
