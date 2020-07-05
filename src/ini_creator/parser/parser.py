@@ -3,7 +3,7 @@ Author:     David Walshe
 Date:       05 July 2020
 """
 
-
+import os
 from configparser import ConfigParser
 
 
@@ -43,6 +43,9 @@ class IniParser:
 
         :param file_path: The file to read.
         """
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Cannot find the .ini resource {file_path}")
+
         self._data = []
         self.config_parser = self.parser
         self.config_parser.read(file_path)
@@ -68,6 +71,22 @@ class IniParser:
         data["Name"] = section
         data["Tag"] = section
 
+        data = self.cast_numerics(data)
+
+        return data
+
+    @staticmethod
+    def cast_numerics(data: dict) -> dict:
+        for key, value in data.items():
+            try:
+                value = float(value)
+                if value.is_integer():
+                    value = int(value)
+
+                data[key] = value
+            except ValueError:
+                pass
+
         return data
 
     @property
@@ -77,17 +96,23 @@ class IniParser:
 
 if __name__ == '__main__':
     parser = IniParser()
-    parser.parse_file("./../../../res/raw/country_statistics.ini")
+    # parser.parse_file("./../../../res/raw/country_statistics.ini")
+    # print(parser.data)
+    # parser.parse_file("./../../../res/raw/unit_statistics/infantry.ini")
+    # print(parser.data)
+    # parser.parse_file("./../../../res/raw/unit_statistics/vehicles.ini")
+    # print(parser.data)
+    # parser.parse_file("./../../../res/raw/unit_statistics/ships.ini")
+    # print(parser.data)
+    # parser.parse_file("./../../../res/raw/unit_statistics/aircraft.ini")
+    # print(parser.data)
+    # parser.parse_file("./../../../res/raw/unit_statistics/buildings.ini")
+    # print(parser.data)
+    parser.parse_file("./../../../res/raw/ai_controls.ini")
     print(parser.data)
-    parser.parse_file("./../../../res/raw/unit_statistics/infantry.ini")
+    parser.parse_file("./../../../res/raw/weapon_statistics.ini")
     print(parser.data)
-    parser.parse_file("./../../../res/raw/unit_statistics/vehicles.ini")
-    print(parser.data)
-    parser.parse_file("./../../../res/raw/unit_statistics/ships.ini")
-    print(parser.data)
-    parser.parse_file("./../../../res/raw/unit_statistics/aircraft.ini")
-    print(parser.data)
-    parser.parse_file("./../../../res/raw/unit_statistics/buildings.ini")
+    parser.parse_file("./../../../res/raw/general/income_and_production.ini")
     print(parser.data)
 
 
