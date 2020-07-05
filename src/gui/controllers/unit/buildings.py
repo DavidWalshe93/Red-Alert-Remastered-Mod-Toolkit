@@ -5,15 +5,20 @@ Date:       03 July 2020
 from abc import ABC
 
 from src.gui.controllers.utils import set_checked, is_checked, is_checked_true
-from src.gui.controllers.contoller import Controller
+from src.gui.controllers.unit.core import CoreController
 from src.db_driver.models.units.buildings import Buildings
 
 
-class BuildingsController(Controller, ABC):
+class BuildingsController(CoreController, ABC):
 
     def populate_data(self, result: Buildings):
+        """
+        Populates the data from the database into the view.
+
+        :param result: The database query result.
+        """
         super().populate_data(result)
-        if isinstance(result, Buildings):
+        if self.is_building(result):
             self.base_normal = result
             self.adjacent = result
             self.bib = result

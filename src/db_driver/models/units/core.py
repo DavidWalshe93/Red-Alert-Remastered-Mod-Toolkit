@@ -40,6 +40,11 @@ class Core:
     DoubleOwned = Column(String, default="no")
 
     def insert_from_dict(self, item: dict):
+        """
+        Helper method to insert a dict object
+        :param item:
+        :return:
+        """
         attribute_names = [attrib for attrib in dir(self) if attrib[0].isupper()]
 
         new_item = {**self.__dict__, **item}

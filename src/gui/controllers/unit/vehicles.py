@@ -12,6 +12,11 @@ from src.db_driver.models.units.vehicles import Vehicles
 class VehiclesController(UnitController, ABC):
 
     def populate_data(self, result: Vehicles):
+        """
+        Populates the data from the database into the view.
+
+        :param result: The database query result.
+        """
         super().populate_data(result)
         if isinstance(result, Vehicles):
             self.crushable = result

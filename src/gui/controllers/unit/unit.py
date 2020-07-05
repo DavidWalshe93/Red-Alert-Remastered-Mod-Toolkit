@@ -2,26 +2,23 @@
 Author:     David Walshe
 Date:       03 July 2020
 """
+
 from abc import ABC
 
 from src.gui.controllers.utils import set_checked, is_checked
-from src.gui.controllers.contoller import Controller
-from src.db_driver.models.units.vehicles import Vehicles
-from src.db_driver.models.units.aircraft import Aircraft
-from src.db_driver.models.units.ships import Ships
-from src.db_driver.models.units.infantry import Infantry
+from src.gui.controllers.unit.core import CoreController, UnitType
 
 
-from typing import Union
+class UnitController(CoreController, ABC):
 
-UnitType = Union[Aircraft, Infantry, Ships, Vehicles]
+    def populate_data(self, result: UnitType) -> None:
+        """
+        Populates the data from the database into the view.
 
-
-class UnitController(Controller, ABC):
-
-    def populate_data(self, result: UnitType):
+        :param result: The database query result.
+        """
         super().populate_data(result)
-        if isinstance(result, (Aircraft, Infantry, Ships, Vehicles)):
+        if self.is_unit(result):
             self.passengers = result
             self.speed = result
 

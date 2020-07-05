@@ -12,6 +12,11 @@ from src.db_driver.models.units.infantry import Infantry
 class InfantryController(UnitController, ABC):
 
     def populate_data(self, result: Infantry):
+        """
+        Populates the data from the database into the view.
+
+        :param result: The database query result.
+        """
         super().populate_data(result)
         if isinstance(result, Infantry):
             self.c4 = result

@@ -9,7 +9,7 @@ import sys
 from PyQt5 import QtWidgets
 
 from src.db_driver.db_manager import DBManager
-from src.gui.controllers.unit.core import UnitCoreController
+from src.gui.controllers.unit.unit_structure import UnitStructureController
 from src.gui.view.app import MainWindow
 
 logger = logging.getLogger(__name__)
@@ -24,7 +24,8 @@ def run():
     window.show()
 
     # Setup controllers with view.
-    unit_controller = UnitCoreController(window)
+    unit_controller = UnitStructureController(window)
     unit_controller.bind_slots()
+    unit_controller.bind_shortcuts()
 
     app.exec_()

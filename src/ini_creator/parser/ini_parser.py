@@ -5,6 +5,8 @@ Date:       27 June 2020
 
 import json
 
+from configparser import ConfigParser
+
 
 class IniParser:
 
@@ -78,6 +80,30 @@ class IniParser:
         return json_data
 
 
+def ConfigSectionMap(section, config_parser):
+    dict1 = {}
+    options = config_parser.options(section)
+    for option in options:
+        try:
+            dict1[option] = config_parser.get(section, option)
+        except Exception as err:
+            print(err)
+            raise err
+            print("exception on %s!" % option)
+            dict1[option] = None
+    return dict1
+
+
 if __name__ == '__main__':
-    parser = IniParser()
-    print(parser.parse("aircraft.ini"))
+    # parser = IniParser()
+    # print(parser.parse("aircraft.ini"))
+    import pprint
+    cfg_parser = ConfigParser(allow_no_value=True)
+
+    # with open("./../../../default_rules.ini") as fh:
+    cfg_parser.read("./../../../default_rules.ini")
+
+    for section in cfg_parser.sections():
+        pprint.pprint(ConfigSectionMap(section, cfg_parser))
+
+

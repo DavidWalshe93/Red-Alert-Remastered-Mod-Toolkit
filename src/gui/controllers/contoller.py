@@ -8,6 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from abc import ABC, abstractmethod
+import logging
 
 from PyQt5 import QtWidgets, QtGui
 
@@ -17,6 +18,8 @@ from src.config.config_manager import ConfigManager
 
 if TYPE_CHECKING:
     from src.gui.gui import MainWindow
+
+logger = logging.getLogger(__name__)
 
 
 class Controller(ABC):
@@ -42,6 +45,8 @@ class Controller(ABC):
         # Bindings
         self.view.actionCompile.triggered.connect(self.compile)
 
+    @abstractmethod
+    def bind_shortcuts(self) -> None:
         # Hotkeys
         self.compile_shortcut.activated.connect(self.compile)
 
@@ -52,8 +57,10 @@ class Controller(ABC):
         if self.config_manager.map_directory is None:
             self.showDialog()
         try:
+            logger.info("Compiling mods...")
             ini_writer = IniWriter()
             ini_writer.build()
+            logger.info("Mod files compiled")
         except Exception as err:
             print(err)
 
@@ -66,12 +73,16 @@ class Controller(ABC):
         """
         pass
 
-    def showDialog(self):
+    def showDialog(self) -> None:
+        """
+        Show dialog for selecting mod map directory.
+        """
         try:
             home_dir = self.config_manager.map_directory
             dir_name = QtWidgets.QFileDialog.getExistingDirectory(self.view, "Select map dir", home_dir)
             self.config_manager.map_directory = dir_name
         except Exception as err:
-            print(err)
+            logger.info(f"Map Directory Dialog Error\n\t"
+                        f"{err}")
 
 
