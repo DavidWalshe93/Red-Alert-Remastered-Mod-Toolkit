@@ -34,16 +34,16 @@ def main():
     except:
         print("Issue")
 
-    # add_data("../../res/raw/unit_statistics/buildings.ini", BuildingsDefault)
-    # add_data("../../res/raw/unit_statistics/buildings.ini", BuildingsCustom)
-    # add_data("../../res/raw/unit_statistics/aircraft.ini", AircraftDefault)
-    # add_data("../../res/raw/unit_statistics/aircraft.ini", AircraftCustom)
-    # add_data("../../res/raw/unit_statistics/vehicles.ini", VehiclesDefault)
-    # add_data("../../res/raw/unit_statistics/vehicles.ini", VehiclesCustom)
+    add_data("../../res/raw/unit_statistics/buildings.ini", BuildingsDefault)
+    add_data("../../res/raw/unit_statistics/buildings.ini", BuildingsCustom)
+    add_data("../../res/raw/unit_statistics/aircraft.ini", AircraftDefault)
+    add_data("../../res/raw/unit_statistics/aircraft.ini", AircraftCustom)
+    add_data("../../res/raw/unit_statistics/vehicles.ini", VehiclesDefault)
+    add_data("../../res/raw/unit_statistics/vehicles.ini", VehiclesCustom)
     add_data("../../res/raw/unit_statistics/infantry.ini", InfantryDefault)
     add_data("../../res/raw/unit_statistics/infantry.ini", InfantryCustom)
-    # add_data("../../res/raw/unit_statistics/ships.ini", ShipsDefault)
-    # add_data("../../res/raw/unit_statistics/ships.ini", ShipsCustom)
+    add_data("../../res/raw/unit_statistics/ships.ini", ShipsDefault)
+    add_data("../../res/raw/unit_statistics/ships.ini", ShipsCustom)
 
 
 if __name__ == '__main__':
