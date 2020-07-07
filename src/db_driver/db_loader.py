@@ -13,6 +13,8 @@ from src.db_driver.models.units.aircraft import AircraftDefault, AircraftCustom
 from src.db_driver.models.units.infantry import InfantryDefault, InfantryCustom
 from src.db_driver.models.units.ships import ShipsDefault, ShipsCustom
 from src.db_driver.models.units.vehicles import VehiclesDefault, VehiclesCustom
+from src.db_driver.models.countries import CountryDefaults, CountryCustom
+from src.db_driver.models.general import GeneralDefaults, GeneralCustom
 
 
 def add_data(file_name: str, table_cls):
@@ -44,6 +46,10 @@ def main():
     add_data("../../res/raw/unit_statistics/infantry.ini", InfantryCustom)
     add_data("../../res/raw/unit_statistics/ships.ini", ShipsDefault)
     add_data("../../res/raw/unit_statistics/ships.ini", ShipsCustom)
+    add_data("../../res/raw/country_statistics.ini", CountryDefaults)
+    add_data("../../res/raw/country_statistics.ini", CountryCustom)
+    add_data("../../res/raw/general.ini", GeneralDefaults)
+    add_data("../../res/raw/general.ini", GeneralCustom)
 
 
 if __name__ == '__main__':

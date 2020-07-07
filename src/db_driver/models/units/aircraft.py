@@ -11,10 +11,8 @@ class Aircraft(Unit):
 
 
 class AircraftDefault(Base, Aircraft):
-
     __tablename__ = "aircraft_defaults"
 
 
 class AircraftCustom(Base, Aircraft):
-
     __tablename__ = "aircraft_custom"

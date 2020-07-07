@@ -36,6 +36,12 @@ class Core(Model):
     Sensors = Column(String, default="no")
     DoubleOwned = Column(String, default="no")
 
+    @classmethod
+    def mapping(cls):
+        return {
+            "ROT": "rot"
+        }
+
 
 class Unit(Core):
 

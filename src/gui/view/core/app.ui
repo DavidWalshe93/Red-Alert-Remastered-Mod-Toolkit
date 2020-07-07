@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>920</width>
-    <height>869</height>
+    <height>871</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,7 +28,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTabWidget" name="unitTabWidget">
+       <widget class="QTabWidget" name="generalTabWidget">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -47,509 +47,181 @@
          </font>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>General</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string>Economy Options</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_6">
+             <property name="horizontalSpacing">
+              <number>40</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="bailCountLabel">
+               <property name="text">
+                <string>Harvester Bail Count</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="harvestorBailSpinBox">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="value">
+                <number>28</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="buildSpeedLabel">
+               <property name="text">
+                <string>Build Speed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="goldValueLabel">
+               <property name="text">
+                <string>Gold Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="gemValueLabel">
+               <property name="text">
+                <string>Gem Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="growthRateLabel">
+               <property name="text">
+                <string>Ore Growth Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="oreGrowsLabel">
+               <property name="text">
+                <string>Ore Grows</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="oreSpreadsLabel">
+               <property name="text">
+                <string>Ore Spreads</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="oreTruckRateLabel">
+               <property name="text">
+                <string>Ore Truck Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="separateAircraftLabel">
+               <property name="text">
+                <string>Separate Aircraft</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="survivorRateLabel">
+               <property name="text">
+                <string>Survivor Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox"/>
+             </item>
+             <item row="2" column="1">
+              <widget class="QSpinBox" name="goldValueSpinBox"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QSpinBox" name="gemSpinBox"/>
+             </item>
+             <item row="5" column="1">
+              <widget class="QCheckBox" name="oreGrowsCheckBox">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QSpinBox" name="oreGrowthRateSpinBox"/>
+             </item>
+             <item row="6" column="1">
+              <widget class="QCheckBox" name="oreSpreadsCheckBox">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox"/>
+             </item>
+             <item row="8" column="1">
+              <widget class="QCheckBox" name="separateAircraftCheckBox">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="QDoubleSpinBox" name="survivorRateSpinBox"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="groupBox_3">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
         <widget class="QWidget" name="units_tab">
          <attribute name="title">
           <string>Units</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="1">
-           <layout class="QGridLayout" name="gridLayout">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item row="1" column="1">
-             <widget class="QGroupBox" name="structuresGroupBox">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="title">
-               <string>Structures</string>
-              </property>
-              <layout class="QFormLayout" name="formLayout_4">
-               <property name="horizontalSpacing">
-                <number>40</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>10</number>
-               </property>
-               <property name="leftMargin">
-                <number>20</number>
-               </property>
-               <property name="rightMargin">
-                <number>20</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="baseNormalLabel">
-                 <property name="text">
-                  <string>Base Normal </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="baseNormalCheckBox">
-                 <property name="toolTip">
-                  <string>Considered for building adjacency checks (def=yes)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="adjacentLabel">
-                 <property name="text">
-                  <string>Adjacent</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QSpinBox" name="adjacentSpinBox">
-                 <property name="toolTip">
-                  <string>Distance allowed to place from other buildings (def=1)</string>
-                 </property>
-                 <property name="maximum">
-                  <number>10</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="bibLabel">
-                 <property name="text">
-                  <string>Bib</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="bibCheckBox">
-                 <property name="toolTip">
-                  <string>Should the building have an attached bib (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="capturableLabel">
-                 <property name="text">
-                  <string>Capturable</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QCheckBox" name="capturableCheckBox">
-                 <property name="toolTip">
-                  <string>Can this building be infiltrated by a spy/engineer (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="crewedLabel">
-                 <property name="text">
-                  <string>Crewed</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QCheckBox" name="crewedCheckBox">
-                 <property name="toolTip">
-                  <string>Does it contain a crew that can escape (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="powerLabel">
-                 <property name="text">
-                  <string>Power</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="1">
-                <widget class="QSpinBox" name="powerSpinBox">
-                 <property name="toolTip">
-                  <string>Power output [positive for output, negative for drain] (def=0)</string>
-                 </property>
-                 <property name="minimum">
-                  <number>-20000</number>
-                 </property>
-                 <property name="maximum">
-                  <number>20000</number>
-                 </property>
-                 <property name="singleStep">
-                  <number>20</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="poweredLabel">
-                 <property name="text">
-                  <string>Powered</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="1">
-                <widget class="QCheckBox" name="poweredCheckBox">
-                 <property name="toolTip">
-                  <string>Does it require power to function (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="0">
-                <widget class="QLabel" name="repairableLabel">
-                 <property name="text">
-                  <string>Repairable</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="1">
-                <widget class="QCheckBox" name="repairableCheckBox">
-                 <property name="toolTip">
-                  <string>Can it be repaired (def=yes)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="0">
-                <widget class="QLabel" name="storageLabel">
-                 <property name="text">
-                  <string>Storage</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="0">
-                <widget class="QLabel" name="unsellableLabel">
-                 <property name="text">
-                  <string>Unsellable</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="1">
-                <widget class="QCheckBox" name="unsellableCheckBox">
-                 <property name="toolTip">
-                  <string>Cannot sell this building (even if it can be built)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="10" column="0">
-                <widget class="QLabel" name="waterBoundLabel">
-                 <property name="text">
-                  <string>Water Bound</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="10" column="1">
-                <widget class="QCheckBox" name="waterBoundCheckBox">
-                 <property name="toolTip">
-                  <string>Is this building placed on water only (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="1">
-                <widget class="QSpinBox" name="storageSpinBox">
-                 <property name="toolTip">
-                  <string>The number of credits this building can store (def=0)</string>
-                 </property>
-                 <property name="maximum">
-                  <number>10000</number>
-                 </property>
-                 <property name="singleStep">
-                  <number>500</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QGroupBox" name="infantryGroupBox">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="title">
-               <string>Infantry</string>
-              </property>
-              <layout class="QFormLayout" name="formLayout">
-               <property name="horizontalSpacing">
-                <number>40</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>10</number>
-               </property>
-               <property name="leftMargin">
-                <number>20</number>
-               </property>
-               <property name="rightMargin">
-                <number>20</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="c4Label">
-                 <property name="text">
-                  <string>C4</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="c4checkBox">
-                 <property name="statusTip">
-                  <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                 <property name="tristate">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="fraidycatLabel">
-                 <property name="text">
-                  <string>Fraidycat</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="fraidycatCheckBox">
-                 <property name="statusTip">
-                  <string>Is it inherently afraid and will panic easily (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="tristate">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="infiltrateLabel">
-                 <property name="text">
-                  <string>Infiltrate</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="infiltrateCheckBox">
-                 <property name="statusTip">
-                  <string>Can it enter a building like a spy or thief (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="tristate">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QCheckBox" name="isCanineCheckBox">
-                 <property name="statusTip">
-                  <string>Should special case dog logic be applied to this?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="tristate">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="isCanineLabel">
-                 <property name="text">
-                  <string>Is Canine</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QGroupBox" name="vehiclesGroupBox">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="title">
-               <string>Vehicles</string>
-              </property>
-              <layout class="QFormLayout" name="formLayout_5">
-               <property name="horizontalSpacing">
-                <number>40</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>10</number>
-               </property>
-               <property name="leftMargin">
-                <number>20</number>
-               </property>
-               <property name="rightMargin">
-                <number>20</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="crushableLabel">
-                 <property name="text">
-                  <string>Crushable</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="crushableCheckBox">
-                 <property name="toolTip">
-                  <string>Can it be crushed by a heavy tracked vehicle (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="trackedLabel">
-                 <property name="text">
-                  <string>Tracked</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="trackedCheckBox">
-                 <property name="toolTip">
-                  <string>Is this vehicle tracked [as opposed to wheeled] (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="noMovingFireLabel">
-                 <property name="text">
-                  <string>NoMovingFire</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="noMovingFireCheckBox">
-                 <property name="toolTip">
-                  <string>The vehicle must stop before it can fire (def=no)?</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QGroupBox" name="unitsGroupBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="title">
-               <string>Units</string>
-              </property>
-              <layout class="QFormLayout" name="formLayout_3">
-               <property name="horizontalSpacing">
-                <number>40</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>10</number>
-               </property>
-               <property name="leftMargin">
-                <number>20</number>
-               </property>
-               <property name="rightMargin">
-                <number>20</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="passengersLabel">
-                 <property name="text">
-                  <string>Passengers</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSpinBox" name="passengersSpinBox">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>30</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="toolTip">
-                  <string>Number of passengers it may carry (def=0)</string>
-                 </property>
-                 <property name="statusTip">
-                  <string/>
-                 </property>
-                 <property name="whatsThis">
-                  <string/>
-                 </property>
-                 <property name="maximum">
-                  <number>10</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="speedLabel">
-                 <property name="text">
-                  <string>Speed</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QSpinBox" name="speedSpinBox">
-                 <property name="toolTip">
-                  <string>Speed of this object (def=0)</string>
-                 </property>
-                 <property name="maximum">
-                  <number>50</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
-          </item>
           <item row="0" column="0">
            <widget class="QGroupBox" name="commonUnitGroupBox">
             <property name="sizePolicy">
@@ -1440,41 +1112,501 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="saveButton">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Save</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="defaultsButton">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Restore Defaults</string>
-            </property>
-           </widget>
+            <item row="1" column="1">
+             <widget class="QGroupBox" name="structuresGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Structures</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_4">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="baseNormalLabel">
+                 <property name="text">
+                  <string>Base Normal </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="baseNormalCheckBox">
+                 <property name="toolTip">
+                  <string>Considered for building adjacency checks (def=yes)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="adjacentLabel">
+                 <property name="text">
+                  <string>Adjacent</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="adjacentSpinBox">
+                 <property name="toolTip">
+                  <string>Distance allowed to place from other buildings (def=1)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="bibLabel">
+                 <property name="text">
+                  <string>Bib</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="bibCheckBox">
+                 <property name="toolTip">
+                  <string>Should the building have an attached bib (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="capturableLabel">
+                 <property name="text">
+                  <string>Capturable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="capturableCheckBox">
+                 <property name="toolTip">
+                  <string>Can this building be infiltrated by a spy/engineer (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="crewedLabel">
+                 <property name="text">
+                  <string>Crewed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="crewedCheckBox">
+                 <property name="toolTip">
+                  <string>Does it contain a crew that can escape (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="powerLabel">
+                 <property name="text">
+                  <string>Power</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QSpinBox" name="powerSpinBox">
+                 <property name="toolTip">
+                  <string>Power output [positive for output, negative for drain] (def=0)</string>
+                 </property>
+                 <property name="minimum">
+                  <number>-20000</number>
+                 </property>
+                 <property name="maximum">
+                  <number>20000</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>20</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="poweredLabel">
+                 <property name="text">
+                  <string>Powered</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QCheckBox" name="poweredCheckBox">
+                 <property name="toolTip">
+                  <string>Does it require power to function (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="repairableLabel">
+                 <property name="text">
+                  <string>Repairable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QCheckBox" name="repairableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be repaired (def=yes)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="storageLabel">
+                 <property name="text">
+                  <string>Storage</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="0">
+                <widget class="QLabel" name="unsellableLabel">
+                 <property name="text">
+                  <string>Unsellable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <widget class="QCheckBox" name="unsellableCheckBox">
+                 <property name="toolTip">
+                  <string>Cannot sell this building (even if it can be built)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0">
+                <widget class="QLabel" name="waterBoundLabel">
+                 <property name="text">
+                  <string>Water Bound</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="1">
+                <widget class="QCheckBox" name="waterBoundCheckBox">
+                 <property name="toolTip">
+                  <string>Is this building placed on water only (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1">
+                <widget class="QSpinBox" name="storageSpinBox">
+                 <property name="toolTip">
+                  <string>The number of credits this building can store (def=0)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>500</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="infantryGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Infantry</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="c4Label">
+                 <property name="text">
+                  <string>C4</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="c4checkBox">
+                 <property name="statusTip">
+                  <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="fraidycatLabel">
+                 <property name="text">
+                  <string>Fraidycat</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="fraidycatCheckBox">
+                 <property name="statusTip">
+                  <string>Is it inherently afraid and will panic easily (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="infiltrateLabel">
+                 <property name="text">
+                  <string>Infiltrate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="infiltrateCheckBox">
+                 <property name="statusTip">
+                  <string>Can it enter a building like a spy or thief (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="isCanineCheckBox">
+                 <property name="statusTip">
+                  <string>Should special case dog logic be applied to this?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="isCanineLabel">
+                 <property name="text">
+                  <string>Is Canine</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QGroupBox" name="vehiclesGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Vehicles</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_5">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="crushableLabel">
+                 <property name="text">
+                  <string>Crushable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="crushableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be crushed by a heavy tracked vehicle (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="trackedLabel">
+                 <property name="text">
+                  <string>Tracked</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="trackedCheckBox">
+                 <property name="toolTip">
+                  <string>Is this vehicle tracked [as opposed to wheeled] (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="noMovingFireLabel">
+                 <property name="text">
+                  <string>NoMovingFire</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="noMovingFireCheckBox">
+                 <property name="toolTip">
+                  <string>The vehicle must stop before it can fire (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="unitsGroupBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Units</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_3">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="passengersLabel">
+                 <property name="text">
+                  <string>Passengers</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QSpinBox" name="passengersSpinBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>30</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>Number of passengers it may carry (def=0)</string>
+                 </property>
+                 <property name="statusTip">
+                  <string/>
+                 </property>
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="speedLabel">
+                 <property name="text">
+                  <string>Speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="speedSpinBox">
+                 <property name="toolTip">
+                  <string>Speed of this object (def=0)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>50</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

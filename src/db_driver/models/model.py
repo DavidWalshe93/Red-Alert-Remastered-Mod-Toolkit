@@ -10,6 +10,10 @@ Base = ConnectionManager.base()
 
 class Model:
 
+    @classmethod
+    def mapping(cls):
+        return {}
+
     def insert_from_dict(self, item: dict):
         """
         Helper method to insert a dict object
@@ -40,17 +44,13 @@ class Model:
         property_names = []
 
         for name in column_names:
-            # Check to see if the name is an abbreviation i.e. ROT
-            is_all_upper = [1 if letter.isupper() else 0 for letter in name[1:]]
-
-            # If not an abbreviation
-            if min(is_all_upper) == 0:
+            # lower case the abbreviation.
+            if name in cls.mapping():
+                property_names.append(cls.mapping()[name])
+            else:
                 # place a underscore in front of every capital, starting after the first letter.
                 letters = [f"_{letter}" if letter.isupper() else letter for letter in name[1:]]
                 # join the result and lowercase all letters to create snake case format.
                 property_names.append(name[0].lower() + "".join(letters).lower())
-            else:
-                # lower case the abbreviation.
-                property_names.append(name.lower())
 
         return {column_name: property_name for column_name, property_name in zip(column_names, property_names)}

@@ -20,7 +20,7 @@ UnitStructureType = Union[Aircraft, Infantry, Vehicles, Buildings, Ships]
 
 class CoreController(Controller, ABC):
 
-    def populate_data(self, result: UnitStructureType):
+    def populate_data(self, result: any):
         super().populate_data(result)
 
     @staticmethod
@@ -44,8 +44,12 @@ class CoreController(Controller, ABC):
         return isinstance(obj, Buildings)
 
     @property
-    def type_selection(self):
+    def table_selection(self):
         return self.view.unitTypeComboBox.currentText()
+
+    @table_selection.setter
+    def table_selection(self, value):
+        pass
 
     @property
     def name(self):

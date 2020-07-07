@@ -4,8 +4,11 @@ Date:       28 June 2020
 """
 
 import functools
+import logging
 
 from src.db_driver.connection_manager import ConnectionManager, Singleton
+
+logger = logging.getLogger(__name__)
 
 
 def sqlite_session(func: callable) -> callable:
@@ -95,7 +98,11 @@ class DBManager(metaclass=Singleton):
         :param kwargs: The search criteria for the WHERE clause.
         :return: A list of row items that match the search criteria.
         """
-        return DBManager.query(table, **kwargs)[0]
+        try:
+            return DBManager.query(table, **kwargs)[0]
+        except IndexError as err:
+            logger.error(f"Query has no results for {table} using kwargs = {kwargs}")
+            raise err
 
     @staticmethod
     @sqlite_session
