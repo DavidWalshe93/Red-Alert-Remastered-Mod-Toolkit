@@ -27,7 +27,7 @@ def add_data(file_name: str, table_cls):
     print(db.all(table_cls))
 
 
-def main():
+def load_database():
     db = DBManager()
     try:
         pass
@@ -53,4 +53,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    load_database()
