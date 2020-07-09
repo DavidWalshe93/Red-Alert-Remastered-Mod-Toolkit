@@ -243,7 +243,7 @@ class AppController:
             logger.error(f"Model Update error - {err}")
 
     @composed(inject_table_objects, remove_sa_instance_state, inject_table_dicts)
-    def update_appearance(self, default, custom, column, widget_name):
+    def update_view(self, default, custom, column, widget_name):
         if default[column] != custom[column]:
             self.view.set_custom_view(widget_name)
         else:
@@ -252,7 +252,7 @@ class AppController:
     @inject_model_data
     def update_model_on_change(self, column, controller, widget_name):
         self.update_model(column, controller)
-        self.update_appearance(controller, column, widget_name)
+        self.update_view(controller, column, widget_name)
 
     @staticmethod
     def get_column(sender: QWidget):
@@ -280,15 +280,6 @@ class AppController:
 
         raise AttributeError(f"{attribute} does not exist for any controller objects")
 
-    @staticmethod
-    def get_controller_data(controller: Controller, attribute: str):
-
-        table = controller.table
-        name = controller.name
-        value = controller.value(attribute)
-
-        return table, name, value
-
     def run(self):
         try:
             app = QApplication([])
@@ -302,7 +293,7 @@ class AppController:
             self.bind_controller_slots()
             self.bind_controller_shortcuts()
 
-            db_differ = DbDiff(self.model)
+            # db_differ = DbDiff(self.model)
 
             app.exec_()
         except Exception as err:
