@@ -203,11 +203,11 @@ class CoreController(Controller, ABC):
 
     @property
     def strength(self):
-        return self.view.healthSpinBox.value()
+        return self.view.strengthSpinBox.value()
 
     @strength.setter
     def strength(self, value: UnitStructureType):
-        self.view.healthSpinBox.setValue(value.Strength)
+        self.view.strengthSpinBox.setValue(value.Strength)
 
     @property
     def sensors(self):

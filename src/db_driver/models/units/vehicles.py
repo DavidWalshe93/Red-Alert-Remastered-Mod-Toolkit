@@ -13,7 +13,7 @@ class Vehicles(Unit):
 
 
 class VehiclesDefault(Base, Vehicles):
-    __tablename__ = "vehicles_defaults"
+    __tablename__ = "vehicles_default"
 
 
 class VehiclesCustom(Base, Vehicles):

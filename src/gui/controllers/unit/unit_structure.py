@@ -46,14 +46,12 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
         self.view.unitComboBox.currentTextChanged.connect(self.populate_data)
         self.view.c4checkBox.stateChanged.connect(self.view.c4_adjust_dependencies)
 
+        # self.view.ammoSpinBox.valueChanged.connect(self.update_db_on_change)
+
     def populate_units_based_on_type(self) -> None:
         """
         Populates the units field in the GUI.
         """
-        if self.table is not None:
-            print(self.table)
-            self.update_model()
-            print("done")
         # Get the table selected.
         key = self.table_selection
         self.table = self.get_custom_table(key)
@@ -94,20 +92,20 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
                         raise err
 
             # Highlight fields that are different to the default.
-            self.show_difference_highlighting()
+            # self.show_difference_highlighting()
 
-    def get_label_names(self) -> dict:
-        """
-        Gets a list of property names matching the table fields. Removes non GUI related fields.
-
-        :return: A dict of property label names.
-        """
-        label_names = super().get_label_names()
-
-        # Adjust naming for some fields.
-        label_names.update({"rot": label_names.pop("ROT")})
-
-        return label_names
+    # def get_label_names(self) -> dict:
+    #     """
+    #     Gets a list of property names matching the table fields. Removes non GUI related fields.
+    #
+    #     :return: A dict of property label names.
+    #     """
+    #     label_names = super().get_label_names()
+    #
+    #     # Adjust naming for some fields.
+    #     label_names.update({"rot": label_names.pop("ROT")})
+    #
+    #     return label_names
 
     def get_custom_table(self, key):
         """
@@ -125,7 +123,7 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
             "vehicles": VehiclesCustom
         }.get(key, None)
 
-    def get_defaults_table(self, key):
+    def get_default_table(self, key):
         """
         Returns the ORM Table object that matches the value key passed.
 

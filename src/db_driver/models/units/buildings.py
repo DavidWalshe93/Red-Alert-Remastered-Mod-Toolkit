@@ -22,7 +22,7 @@ class Buildings(Core):
 
 class BuildingsDefault(Base, Buildings):
 
-    __tablename__ = "building_defaults"
+    __tablename__ = "building_default"
 
 
 class BuildingsCustom(Base, Buildings):

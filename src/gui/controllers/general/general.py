@@ -17,6 +17,11 @@ class GeneralController(EconomyController, CombatController):
         super().__init__(*args, *kwargs)
 
         self.populate_data()
+        # self.bind_controller_slots()
+
+    # def bind_controller_slots(self):
+    #     self.view.bailCountSpinBox.valueChanged.connect(self.update_db_on_change)
+    #     # self.view.buildSpeedSpinBox.valueChanged.connect(self.u)
 
     def populate_data(self, result=None) -> None:
         table = GeneralCustom
@@ -41,5 +46,5 @@ class GeneralController(EconomyController, CombatController):
     def get_custom_table(self, *args):
         return GeneralCustom
 
-    def get_defaults_table(self, *args):
+    def get_default_table(self, *args):
         return GeneralDefaults

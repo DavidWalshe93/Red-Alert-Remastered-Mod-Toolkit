@@ -22,7 +22,7 @@ class Country(Model):
 
 
 class CountryDefaults(Country, Base):
-    __tablename__ = "country_defaults"
+    __tablename__ = "country_default"
 
 
 class CountryCustom(Country, Base):

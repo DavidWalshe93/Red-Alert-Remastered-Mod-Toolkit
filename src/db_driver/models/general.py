@@ -88,7 +88,7 @@ class General(IncomeAndProduction, CombatAndDamage, Crates, RepairAndRefit, Spec
 
 class GeneralDefaults(General, Base):
 
-    __tablename__ = "general_defaults"
+    __tablename__ = "general_default"
 
 
 class GeneralCustom(General, Base):

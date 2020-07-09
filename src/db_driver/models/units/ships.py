@@ -12,9 +12,9 @@ class Ships(Unit):
 
 class ShipsDefault(Base, Ships):
 
-    __tablename__ = "ships_defaults"
+    __tablename__ = "ships_default"
 
 
 class ShipsCustom(Base, Ships):
 
-    __tablename__ = "ship_customs"
+    __tablename__ = "ships_custom"

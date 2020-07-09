@@ -16,7 +16,7 @@ class Infantry(Unit):
 
 class InfantryDefault(Base, Infantry):
 
-    __tablename__ = "infantry_defaults"
+    __tablename__ = "infantry_default"
 
 
 class InfantryCustom(Base, Infantry):

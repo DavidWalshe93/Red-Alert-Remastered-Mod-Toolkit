@@ -13,11 +13,11 @@ class EconomyController(CoreController, ABC):
 
     @property
     def bail_count(self):
-        return self.view.harvestorBailSpinBox.value()
+        return self.view.bailCountSpinBox.value()
 
     @bail_count.setter
     def bail_count(self, value: General):
-        self.view.harvestorBailSpinBox.setValue(value.BailCount)
+        self.view.bailCountSpinBox.setValue(value.BailCount)
 
     @property
     def build_speed(self):

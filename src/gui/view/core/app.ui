@@ -94,12 +94,15 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QSpinBox" name="harvestorBailSpinBox">
+              <widget class="QSpinBox" name="bailCountSpinBox">
                <property name="minimum">
                 <number>1</number>
                </property>
                <property name="value">
                 <number>28</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>bail_count</string>
                </property>
               </widget>
              </item>
@@ -167,43 +170,76 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox"/>
+              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox">
+               <property name="property_name" stdset="0">
+                <string>build_speed</string>
+               </property>
+              </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QSpinBox" name="goldValueSpinBox"/>
+              <widget class="QSpinBox" name="goldValueSpinBox">
+               <property name="property_name" stdset="0">
+                <string>gold_value</string>
+               </property>
+              </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QSpinBox" name="gemSpinBox"/>
+              <widget class="QSpinBox" name="gemSpinBox">
+               <property name="property_name" stdset="0">
+                <string>gem_value</string>
+               </property>
+              </widget>
              </item>
              <item row="5" column="1">
               <widget class="QCheckBox" name="oreGrowsCheckBox">
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>ore_grows</string>
+               </property>
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QSpinBox" name="oreGrowthRateSpinBox"/>
+              <widget class="QSpinBox" name="oreGrowthRateSpinBox">
+               <property name="property_name" stdset="0">
+                <string>growth_rate</string>
+               </property>
+              </widget>
              </item>
              <item row="6" column="1">
               <widget class="QCheckBox" name="oreSpreadsCheckBox">
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>ore_spreads</string>
+               </property>
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox"/>
+              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox">
+               <property name="property_name" stdset="0">
+                <string>ore_truck_rate</string>
+               </property>
+              </widget>
              </item>
              <item row="8" column="1">
               <widget class="QCheckBox" name="separateAircraftCheckBox">
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>separate_aircraft</string>
+               </property>
               </widget>
              </item>
              <item row="9" column="1">
-              <widget class="QDoubleSpinBox" name="survivorRateSpinBox"/>
+              <widget class="QDoubleSpinBox" name="survivorRateSpinBox">
+               <property name="property_name" stdset="0">
+                <string>survivor_rate</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -338,6 +374,9 @@ p, li { white-space: pre-wrap; }
                <property name="value">
                 <number>-1</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>ammo</string>
+               </property>
               </widget>
              </item>
              <item row="3" column="0">
@@ -351,6 +390,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QComboBox" name="armorComboBox">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The armor type of this object [&lt;/p&gt;&lt;p&gt;	none (0),&lt;/p&gt;&lt;p&gt;	wood (1),&lt;/p&gt;&lt;p&gt;	light (2),&lt;/p&gt;&lt;p&gt;	heavy, (3)&lt;/p&gt;&lt;p&gt;	concrete (4)&lt;/p&gt;&lt;p&gt;] (def=none)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>armor</string>
                </property>
                <item>
                 <property name="text">
@@ -399,6 +441,9 @@ p, li { white-space: pre-wrap; }
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>cloakable</string>
+               </property>
               </widget>
              </item>
              <item row="5" column="0">
@@ -425,6 +470,9 @@ p, li { white-space: pre-wrap; }
                <property name="value">
                 <number>1000</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>cost</string>
+               </property>
               </widget>
              </item>
              <item row="6" column="0">
@@ -442,6 +490,9 @@ p, li { white-space: pre-wrap; }
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>double_owned</string>
+               </property>
               </widget>
              </item>
              <item row="7" column="0">
@@ -458,6 +509,9 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>explodes</string>
                </property>
               </widget>
              </item>
@@ -482,6 +536,9 @@ p, li { white-space: pre-wrap; }
                <property name="value">
                 <number>-1</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>guard_range</string>
+               </property>
               </widget>
              </item>
              <item row="9" column="0">
@@ -495,6 +552,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QComboBox" name="imageComboBox">
                <property name="toolTip">
                 <string>Name of graphic data to use for this object (def=same as object identifier)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>image</string>
                </property>
               </widget>
              </item>
@@ -513,6 +573,9 @@ p, li { white-space: pre-wrap; }
                <property name="text">
                 <string/>
                </property>
+               <property name="property_name" stdset="0">
+                <string>invisible</string>
+               </property>
               </widget>
              </item>
              <item row="11" column="0">
@@ -526,6 +589,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QComboBox" name="ownerComboBox">
                <property name="toolTip">
                 <string>Who can build this [Allies or Soviet] (def=&quot;allies,soviet&quot;, i.e., all)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>owner</string>
                </property>
                <item>
                 <property name="text">
@@ -559,6 +625,9 @@ p, li { white-space: pre-wrap; }
                <property name="maximum">
                 <number>1000</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>points</string>
+               </property>
               </widget>
              </item>
              <item row="13" column="0">
@@ -576,6 +645,9 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>List of extra needed before this can be manufactured (def=no requirement)</string>
                </property>
+               <property name="property_name" stdset="0">
+                <string>prerequiste</string>
+               </property>
               </widget>
              </item>
              <item row="14" column="0">
@@ -589,6 +661,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QComboBox" name="primaryComboBox">
                <property name="toolTip">
                 <string>Primary weapon equipped with (def=none)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>primary</string>
                </property>
                <item>
                 <property name="text">
@@ -788,6 +863,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QComboBox" name="secondaryComboBox">
                <property name="toolTip">
                 <string>Secondary weapon equipped with (def=none)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>secondary</string>
                </property>
                <item>
                 <property name="text">
@@ -996,6 +1074,9 @@ p, li { white-space: pre-wrap; }
                <property name="maximum">
                 <number>10</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>rot</string>
+               </property>
               </widget>
              </item>
              <item row="17" column="0">
@@ -1009,6 +1090,9 @@ p, li { white-space: pre-wrap; }
               <widget class="QSpinBox" name="reloadSpinBox">
                <property name="toolTip">
                 <string>Time delay between reloads (def=0)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>reload</string>
                </property>
               </widget>
              </item>
@@ -1026,6 +1110,9 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>self_healing</string>
                </property>
               </widget>
              </item>
@@ -1047,6 +1134,9 @@ p, li { white-space: pre-wrap; }
                <property name="value">
                 <number>1</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>sight</string>
+               </property>
               </widget>
              </item>
              <item row="20" column="0">
@@ -1057,7 +1147,7 @@ p, li { white-space: pre-wrap; }
               </widget>
              </item>
              <item row="20" column="1">
-              <widget class="QSpinBox" name="healthSpinBox">
+              <widget class="QSpinBox" name="strengthSpinBox">
                <property name="statusTip">
                 <string>Health of this object (aka Strength in .ini file)</string>
                </property>
@@ -1066,6 +1156,9 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="maximum">
                 <number>2000</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>strength</string>
                </property>
               </widget>
              </item>
@@ -1090,6 +1183,9 @@ p, li { white-space: pre-wrap; }
                <property name="value">
                 <number>-1</number>
                </property>
+               <property name="property_name" stdset="0">
+                <string>tech_level</string>
+               </property>
               </widget>
              </item>
              <item row="22" column="0">
@@ -1106,6 +1202,9 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>sensors</string>
                </property>
               </widget>
              </item>
@@ -1155,6 +1254,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>base_normal</string>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -1171,6 +1273,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="maximum">
                   <number>10</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>adjacent</string>
                  </property>
                 </widget>
                </item>
@@ -1189,6 +1294,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>bib</string>
+                 </property>
                 </widget>
                </item>
                <item row="3" column="0">
@@ -1206,6 +1314,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>capturable</string>
+                 </property>
                 </widget>
                </item>
                <item row="4" column="0">
@@ -1222,6 +1333,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>crewed</string>
                  </property>
                 </widget>
                </item>
@@ -1246,6 +1360,9 @@ p, li { white-space: pre-wrap; }
                  <property name="singleStep">
                   <number>20</number>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>power</string>
+                 </property>
                 </widget>
                </item>
                <item row="6" column="0">
@@ -1262,6 +1379,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>powered</string>
                  </property>
                 </widget>
                </item>
@@ -1282,6 +1402,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="checked">
                   <bool>true</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>repairable</string>
                  </property>
                 </widget>
                </item>
@@ -1307,6 +1430,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>unsellable</string>
+                 </property>
                 </widget>
                </item>
                <item row="10" column="0">
@@ -1324,6 +1450,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>water_bound</string>
+                 </property>
                 </widget>
                </item>
                <item row="8" column="1">
@@ -1336,6 +1465,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="singleStep">
                   <number>500</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>storage</string>
                  </property>
                 </widget>
                </item>
@@ -1386,6 +1518,9 @@ p, li { white-space: pre-wrap; }
                  <property name="tristate">
                   <bool>false</bool>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>c4</string>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -1405,6 +1540,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="tristate">
                   <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>fraidycat</string>
                  </property>
                 </widget>
                </item>
@@ -1426,6 +1564,9 @@ p, li { white-space: pre-wrap; }
                  <property name="tristate">
                   <bool>false</bool>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>infiltrate</string>
+                 </property>
                 </widget>
                </item>
                <item row="3" column="1">
@@ -1438,6 +1579,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="tristate">
                   <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>is_canine</string>
                  </property>
                 </widget>
                </item>
@@ -1489,6 +1633,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>crushable</string>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -1506,6 +1653,9 @@ p, li { white-space: pre-wrap; }
                  <property name="text">
                   <string/>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>tracked</string>
+                 </property>
                 </widget>
                </item>
                <item row="2" column="0">
@@ -1522,6 +1672,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>no_moving_fire</string>
                  </property>
                 </widget>
                </item>
@@ -1584,6 +1737,9 @@ p, li { white-space: pre-wrap; }
                  <property name="maximum">
                   <number>10</number>
                  </property>
+                 <property name="property_name" stdset="0">
+                  <string>passengers</string>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -1600,6 +1756,9 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="maximum">
                   <number>50</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>speed</string>
                  </property>
                 </widget>
                </item>

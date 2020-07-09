@@ -42,6 +42,10 @@ class DBManager(metaclass=Singleton):
         ConnectionManager.meta_data().create_all(bind=ConnectionManager.engine())
 
     @staticmethod
+    def tables():
+        return ConnectionManager.meta_data().tables
+
+    @staticmethod
     @sqlite_session
     def create(session, table_cls, data: dict = None) -> None:
         """
