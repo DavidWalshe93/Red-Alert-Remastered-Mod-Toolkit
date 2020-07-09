@@ -7,7 +7,7 @@ from abc import ABC
 from typing import Union
 
 from src.gui.controllers.utils import set_checked, is_checked
-from src.gui.controllers.contoller import Controller
+from src.gui.controllers.controller import Controller
 from src.db_driver.models.units.vehicles import Vehicles
 from src.db_driver.models.units.aircraft import Aircraft
 from src.db_driver.models.units.ships import Ships

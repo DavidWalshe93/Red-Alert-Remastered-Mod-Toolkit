@@ -47,7 +47,7 @@
          </font>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -95,6 +95,12 @@
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="bailCountSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
                <property name="minimum">
                 <number>1</number>
                </property>
@@ -113,10 +119,36 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>build_speed</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="0">
               <widget class="QLabel" name="goldValueLabel">
                <property name="text">
                 <string>Gold Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QSpinBox" name="goldValueSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>gold_value</string>
                </property>
               </widget>
              </item>
@@ -127,10 +159,36 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="1">
+              <widget class="QSpinBox" name="gemValueSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>gem_value</string>
+               </property>
+              </widget>
+             </item>
              <item row="4" column="0">
               <widget class="QLabel" name="growthRateLabel">
                <property name="text">
                 <string>Ore Growth Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QSpinBox" name="growthRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>growth_rate</string>
                </property>
               </widget>
              </item>
@@ -141,10 +199,42 @@
                </property>
               </widget>
              </item>
+             <item row="5" column="1">
+              <widget class="QCheckBox" name="oreGrowsCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_grows</string>
+               </property>
+              </widget>
+             </item>
              <item row="6" column="0">
               <widget class="QLabel" name="oreSpreadsLabel">
                <property name="text">
                 <string>Ore Spreads</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QCheckBox" name="oreSpreadsCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_spreads</string>
                </property>
               </widget>
              </item>
@@ -155,10 +245,39 @@
                </property>
               </widget>
              </item>
+             <item row="7" column="1">
+              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_truck_rate</string>
+               </property>
+              </widget>
+             </item>
              <item row="8" column="0">
               <widget class="QLabel" name="separateAircraftLabel">
                <property name="text">
                 <string>Separate Aircraft</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1">
+              <widget class="QCheckBox" name="separateAircraftCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>separate_aircraft</string>
                </property>
               </widget>
              </item>
@@ -169,73 +288,14 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox">
-               <property name="property_name" stdset="0">
-                <string>build_speed</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QSpinBox" name="goldValueSpinBox">
-               <property name="property_name" stdset="0">
-                <string>gold_value</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QSpinBox" name="gemSpinBox">
-               <property name="property_name" stdset="0">
-                <string>gem_value</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QCheckBox" name="oreGrowsCheckBox">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="property_name" stdset="0">
-                <string>ore_grows</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QSpinBox" name="oreGrowthRateSpinBox">
-               <property name="property_name" stdset="0">
-                <string>growth_rate</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QCheckBox" name="oreSpreadsCheckBox">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="property_name" stdset="0">
-                <string>ore_spreads</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="1">
-              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox">
-               <property name="property_name" stdset="0">
-                <string>ore_truck_rate</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="1">
-              <widget class="QCheckBox" name="separateAircraftCheckBox">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="property_name" stdset="0">
-                <string>separate_aircraft</string>
-               </property>
-              </widget>
-             </item>
              <item row="9" column="1">
               <widget class="QDoubleSpinBox" name="survivorRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
                <property name="property_name" stdset="0">
                 <string>survivor_rate</string>
                </property>
@@ -1505,7 +1565,7 @@ p, li { white-space: pre-wrap; }
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QCheckBox" name="c4checkBox">
+                <widget class="QCheckBox" name="c4CheckBox">
                  <property name="statusTip">
                   <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
                  </property>

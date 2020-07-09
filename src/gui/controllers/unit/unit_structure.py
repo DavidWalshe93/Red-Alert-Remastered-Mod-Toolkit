@@ -31,7 +31,6 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
         Controls updates to the GUI elements via the database.
         """
         super().__init__(*args, **kwargs)
-        self.table = None
 
         self.bind_controller_slots()
 
@@ -44,18 +43,12 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
         """
         self.view.unitTypeComboBox.currentTextChanged.connect(self.populate_units_based_on_type)
         self.view.unitComboBox.currentTextChanged.connect(self.populate_data)
-        self.view.c4checkBox.stateChanged.connect(self.view.c4_adjust_dependencies)
-
-        # self.view.ammoSpinBox.valueChanged.connect(self.update_db_on_change)
+        self.view.c4CheckBox.stateChanged.connect(self.view.c4_adjust_dependencies)
 
     def populate_units_based_on_type(self) -> None:
         """
         Populates the units field in the GUI.
         """
-        # Get the table selected.
-        key = self.table_selection
-        self.table = self.get_custom_table(key)
-
         # Update the combobox with the fields associated with the table selected.
         items = self.model.all_ordered_by(self.table, self.table.Name)
         self.view.unitComboBox.clear()
@@ -63,7 +56,7 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
             self.view.unitComboBox.addItem(i.Name)
 
         # Update the view options based on the current state.
-        self.view.update_options(key)
+        self.view.update_options(self.table_selection)
 
     def populate_data(self, result: None = None) -> None:
         """
@@ -94,18 +87,16 @@ class UnitStructureController(VehiclesController, InfantryController, BuildingsC
             # Highlight fields that are different to the default.
             # self.show_difference_highlighting()
 
-    # def get_label_names(self) -> dict:
-    #     """
-    #     Gets a list of property names matching the table fields. Removes non GUI related fields.
-    #
-    #     :return: A dict of property label names.
-    #     """
-    #     label_names = super().get_label_names()
-    #
-    #     # Adjust naming for some fields.
-    #     label_names.update({"rot": label_names.pop("ROT")})
-    #
-    #     return label_names
+    @property
+    def table(self):
+        # Get the table selected.
+        key = self.table_selection
+        return self.get_custom_table(key)
+
+    @property
+    def tables(self):
+        key = self.table_selection
+        return self.get_default_table(key), self.get_custom_table(key),
 
     def get_custom_table(self, key):
         """

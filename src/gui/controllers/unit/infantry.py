@@ -30,7 +30,7 @@ class InfantryController(UnitController, ABC):
 
     @c4.setter
     def c4(self, value: Infantry):
-        self.view.c4checkBox.setCheckState(set_checked(value.C4))
+        self.view.c4CheckBox.setCheckState(set_checked(value.C4))
 
     @property
     def fraidycat(self):

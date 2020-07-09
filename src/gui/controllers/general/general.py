@@ -43,6 +43,10 @@ class GeneralController(EconomyController, CombatController):
     def table(self):
         return self.get_custom_table()
 
+    @property
+    def tables(self):
+        return self.get_custom_table(), self.get_default_table()
+
     def get_custom_table(self, *args):
         return GeneralCustom
 

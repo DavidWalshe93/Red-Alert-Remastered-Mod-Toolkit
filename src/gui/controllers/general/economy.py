@@ -29,11 +29,11 @@ class EconomyController(CoreController, ABC):
 
     @property
     def gem_value(self):
-        return self.view.gemSpinBox.value()
+        return self.view.gemValueSpinBox.value()
 
     @gem_value.setter
     def gem_value(self, value: General):
-        self.view.gemSpinBox.setValue(value.GemValue)
+        self.view.gemValueSpinBox.setValue(value.GemValue)
 
     @property
     def gold_value(self):
@@ -45,11 +45,11 @@ class EconomyController(CoreController, ABC):
 
     @property
     def growth_rate(self):
-        return self.view.oreGrowthRateSpinBox.value()
+        return self.view.growthRateSpinBox.value()
 
     @growth_rate.setter
     def growth_rate(self, value: General):
-        self.view.oreGrowthRateSpinBox.setValue(value.GrowthRate)
+        self.view.growthRateSpinBox.setValue(value.GrowthRate)
 
     @property
     def ore_grows(self):

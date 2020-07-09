@@ -22,18 +22,21 @@ from src.gui.view.app import MainWindow
 from src.gui.controllers.unit.unit_structure import UnitStructureController
 from src.gui.controllers.general.general import GeneralController
 
+# Decorator helper
+from src.utils.decorators import composed
+
 if TYPE_CHECKING:
-    from src.gui.controllers.contoller import Controller
+    from src.gui.controllers.controller import Controller
 
 WidgetType = Union[QDoubleSpinBox, QSpinBox, QCheckBox, QComboBox]
 
 logger = logging.getLogger(__name__)
 
 
-def process_sender_data(method: callable):
+def inject_model_data(method: callable):
     """
     Processes a sender signal and breaks out all relevant information to
-    update the database on a widget_name change.
+    update the database on a widget state change.
 
     :param method: Method to decorate.
     :return: Decorated method.
@@ -48,9 +51,8 @@ def process_sender_data(method: callable):
         try:
             attribute = sender.property("property_name")
             controller = self.get_controller(attribute)
-            data = self.get_controller_data(controller, attribute)
 
-            ret = method(self, column, data, widget_name)
+            ret = method(self, column, controller, widget_name)
 
         except AttributeError as err:
             logger.error(f"'property_name' does not exist or is incorrect for {widget_name}")
@@ -59,6 +61,76 @@ def process_sender_data(method: callable):
             logger.error(f"Error in 'update_db_on_change()' call with {widget_name}")
             logger.error(f"{err}")
             raise err
+
+        return ret
+
+    return wrapper
+
+
+def inject_table_objects(method: callable) -> callable:
+    """
+    Injects a the default and custom databases into a methods parameter list.
+
+    :param method: Method to decorate.
+    :return: Decorated method.
+    """
+    @functools.wraps(method)
+    def wrapper(self, controller, column, *args, **kwargs):
+        try:
+            default_table, custom_table = controller.tables
+
+            # Get results for current selected unit name.
+            default = self.model.query_first(default_table, Name=controller.name)
+            custom = self.model.query_first(custom_table, Name=controller.name)
+
+            key = column.lower()
+            if key in custom.inv_mapping_keys():
+                column = custom.inverse_mapping()[key]
+
+            ret = method(self, default, custom, column, *args, **kwargs)
+
+            return ret
+
+        except Exception as err:
+            logger.error(f"Can't get current data - {err} - locals: {locals()}")
+            raise
+
+    return wrapper
+
+
+def inject_table_dicts(method: callable) -> callable:
+    """
+    Converts a table object into a dictionary. Used in par with "inject_table_objects".
+
+    :param method: Method to decorate.
+    :return: Decorated method.
+    """
+    @functools.wraps(method)
+    def wrapper(self, default, custom, *args, **kwargs):
+        default_dict = default.__dict__
+        custom_dict = custom.__dict__
+
+        ret = method(self, default_dict, custom_dict, *args, **kwargs)
+
+        return ret
+
+    return wrapper
+
+
+def remove_sa_instance_state(method: callable) -> callable:
+    """
+    Strips the database instance fields from the tables before returning them.
+
+    :param method: Method to decorate.
+    :return: Decorated method.
+    """
+    @functools.wraps(method)
+    def wrapper(self, default, custom, *args, **kwargs):
+        # Remove non-important fields from dict before comparison.
+        default.__dict__.pop("_sa_instance_state")
+        custom.__dict__.pop("_sa_instance_state")
+
+        ret = method(self, default, custom, *args, **kwargs)
 
         return ret
 
@@ -84,9 +156,9 @@ class AppController:
         """
         Abstract method used to bind slots in the view.
         """
-        print("slots")
         self.view.actionCompile.triggered.connect(self.compile)
         self.bind_auto_save()
+        logger.info(f"Registered Qt Slots")
 
     def bind_controller_shortcuts(self) -> None:
         """
@@ -94,14 +166,12 @@ class AppController:
         """
         self.compile_shortcut = QShortcut(QtGui.QKeySequence('Alt+C'), self.view)
         self.compile_shortcut.activated.connect(self.compile)
+        logger.info(f"Registered Qt Shortcuts")
 
-        # self.save_shortcut = QShortcut(QtGui.QKeySequence('Ctrl+S'), self.view)
-        # self.save_shortcut.activated.connect(self.save)
-
-    def save(self):
-        logger.info(f"Saving data")
-        for controller in self.controllers:
-            controller.update_model()
+    # def save(self):
+    #     logger.info(f"Saving data")
+    #     for controller in self.controllers:
+    #         controller.update_model()
 
     def compile(self):
         """
@@ -149,7 +219,6 @@ class AppController:
         return controllers
 
     def bind_auto_save(self):
-        print("Binding Slots")
         for attrib_name in dir(self.view):
             if attrib_name not in self.exclusion_widgets:
                 attrib = self.view.__getattribute__(attrib_name)
@@ -162,24 +231,28 @@ class AppController:
                 elif isinstance(attrib, QComboBox):
                     self.view.__getattribute__(attrib_name).currentTextChanged.connect(self.update_model_on_change)
 
-    def update_model(self, column: str, table, name: str, value: any):
+    def update_model(self, column: str, controller: Controller):
         try:
+            result = self.model.query_first(controller.table, Name=controller.name)
 
-            result = self.model.query_first(table, Name=name)
-
-            result.__setattr__(column, value)
+            result.__setattr__(column, controller.value)
 
             self.model.update(result)
-            logger.info(f"Saved: {column} [{value}]")
+            logger.info(f"Saved: {column} [{controller.value}]")
         except Exception as err:
-            logger.info(f"Model Update error - {err}")
+            logger.error(f"Model Update error - {err}")
 
-    def update_appearance(self, table):
-        pass
+    @composed(inject_table_objects, remove_sa_instance_state, inject_table_dicts)
+    def update_appearance(self, default, custom, column, widget_name):
+        if default[column] != custom[column]:
+            self.view.set_custom_view(widget_name)
+        else:
+            self.view.set_default_view(widget_name)
 
-    @process_sender_data
-    def update_model_on_change(self, column, data, widget_name):
-        self.update_model(column, *data)
+    @inject_model_data
+    def update_model_on_change(self, column, controller, widget_name):
+        self.update_model(column, controller)
+        self.update_appearance(controller, column, widget_name)
 
     @staticmethod
     def get_column(sender: QWidget):
@@ -202,6 +275,7 @@ class AppController:
         """
         for controller in self.controllers:
             if hasattr(controller, attribute):
+                controller.value = attribute
                 return controller
 
         raise AttributeError(f"{attribute} does not exist for any controller objects")
@@ -211,7 +285,7 @@ class AppController:
 
         table = controller.table
         name = controller.name
-        value = controller.__getattribute__(attribute)
+        value = controller.value(attribute)
 
         return table, name, value
 
@@ -229,7 +303,6 @@ class AppController:
             self.bind_controller_shortcuts()
 
             db_differ = DbDiff(self.model)
-            print(db_differ.tables())
 
             app.exec_()
         except Exception as err:
@@ -284,26 +357,3 @@ class DbDiff:
                 names.append(item[0])
 
         return list(set(names))
-
-    def get_current_data(self, remove_instance_data: bool = False) -> tuple:
-        """
-        Gets the default and custom data dictionaries for the selected table.
-
-        :param remove_instance_data: Flag to remove instance data fields.
-        :return: A tuple of default and custom data dictionaries.
-        """
-        try:
-            default_table, custom_table = self.get_tables()
-
-            # Get results for current selected unit name.
-            default = self.model.query_first(default_table, Name=self.name)
-            custom = self.model.query_first(custom_table, Name=self.name)
-
-            if remove_instance_data:
-                # Remove non-important fields from dict before comparison.
-                default.__dict__.pop("_sa_instance_state")
-                custom.__dict__.pop("_sa_instance_state")
-
-            return default, custom
-        except Exception as err:
-            logger.error(f"Can't get current data - {err}")

@@ -58,6 +58,8 @@ class Controller(ABC):
         self.model = model
         self.config_manager = ConfigManager()
 
+        self._value = None
+
     @abstractmethod
     def populate_data(self, result: any = None) -> None:
         """
@@ -88,6 +90,40 @@ class Controller(ABC):
         :return: The database ORM Table object.
         """
         pass
+
+    @abstractmethod
+    def name(self):
+        pass
+
+    @abstractmethod
+    def table(self):
+        pass
+
+    @abstractmethod
+    def tables(self):
+        pass
+
+    @property
+    def value(self) -> any:
+        """
+        Returns the value of a widget via a property getter attribute.
+
+        :return: The value of the property.
+        """
+        if self._value is None:
+            logger.error(f"Controller value attribute must not be None")
+            raise ValueError("Controller value attribute must not be None")
+
+        return self._value
+
+    @value.setter
+    def value(self, attribute: str) -> None:
+        """
+        :param attribute: The property name to lookup.
+        """
+        self._value = self.__getattribute__(attribute)
+
+
 
     # def update_model(self) -> None:
     #     """

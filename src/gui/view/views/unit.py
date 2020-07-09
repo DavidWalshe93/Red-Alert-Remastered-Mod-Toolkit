@@ -15,7 +15,7 @@ class UnitStructureView(View):
             if label in names:
                 self.__getattribute__(f"{object_name}").setStyleSheet(self.DEFAULT_STYLE)
             else:
-                self.__getattribute__(f"{object_name}").setStyleSheet(self.DIFFERENT_STYLE)
+                self.__getattribute__(f"{object_name}").setStyleSheet(self.CUSTOM_STYLE_TEMPLATE)
 
     def c4_adjust_dependencies(self, c4_checkbox_state) -> None:
         """

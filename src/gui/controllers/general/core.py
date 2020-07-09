@@ -5,7 +5,7 @@ Date:       06 July 2020
 
 
 from abc import ABC
-from src.gui.controllers.contoller import Controller
+from src.gui.controllers.controller import Controller
 
 
 class CoreController(Controller, ABC):
