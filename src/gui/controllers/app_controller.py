@@ -244,6 +244,11 @@ class DbDiff:
         self._tables = None
 
     def tables(self) -> list:
+        """
+        Lazy init property, gets the table names of the database.
+
+        :return: List of the DB table names.
+        """
         if self._tables is None:
 
             tables = set("_".join(self.model.tables().keys()).split("_"))
