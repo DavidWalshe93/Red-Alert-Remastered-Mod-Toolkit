@@ -20,7 +20,7 @@
    <string>CNC - Red Alert Remastered Mod Generator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../../resources.qrc">
+   <iconset resource="../../../resources.qrc">
     <normaloff>:/icons/res/icons/app_icon.ico</normaloff>:/icons/res/icons/app_icon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -1864,7 +1864,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCompile">
    <property name="icon">
-    <iconset resource="../../../../resources.qrc">
+    <iconset resource="../../../resources.qrc">
      <normaloff>:/icons/res/icons/compile.ico</normaloff>:/icons/res/icons/compile.ico</iconset>
    </property>
    <property name="text">
@@ -1878,18 +1878,26 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionSelectMapFolder">
+   <property name="icon">
+    <iconset resource="../../../resources.qrc">
+     <normaloff>:/icons/res/icons/map.ico</normaloff>:/icons/res/icons/map.ico</iconset>
+   </property>
    <property name="text">
     <string>Select Map Folder</string>
    </property>
   </action>
   <action name="actionResetDatabase">
+   <property name="icon">
+    <iconset resource="../../../resources.qrc">
+     <normaloff>:/icons/res/icons/caution.ico</normaloff>:/icons/res/icons/caution.ico</iconset>
+   </property>
    <property name="text">
     <string>Reset Database</string>
    </property>
   </action>
  </widget>
  <resources>
-  <include location="../../../../resources.qrc"/>
+  <include location="../../../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

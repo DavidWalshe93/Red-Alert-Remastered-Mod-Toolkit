@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>res/icons/map.ico</file>
+    <file>res/icons/caution.ico</file>
     <file>res/icons/compile.ico</file>
     <file>res/icons/app_icon.ico</file>
   </qresource>

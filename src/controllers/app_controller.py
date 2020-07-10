@@ -11,7 +11,8 @@ import functools
 
 from typing import Union
 
-from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox, QCheckBox, QComboBox, QShortcut, QApplication, QWidget
+from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox, QCheckBox, QComboBox, QShortcut, QApplication, QWidget, \
+                            QFileDialog
 from PyQt5 import QtGui
 
 # Model
@@ -26,7 +27,13 @@ from src.controllers.general.general import GeneralController
 from src.utils.decorators import composed
 
 # Database reset functions
-from src.model.db_loader import reset_database
+from src.model.db_utils import reset_database
+
+# Config_manager
+from src.config.config_manager import ConfigManager
+
+# Database utils
+from src.model.db_utils import get_all_db_table_pairs
 
 if TYPE_CHECKING:
     from src.gui.controllers.controller import Controller
@@ -161,6 +168,7 @@ class AppController:
         """
         self.view.actionCompile.triggered.connect(self.compile)
         self.view.actionResetDatabase.triggered.connect(reset_database)
+        self.view.actionSelectMapFolder.triggered.connect(self.select_map_dialog)
         self.bind_auto_save()
         logger.info(f"Registered Qt Slots")
 
@@ -172,6 +180,20 @@ class AppController:
         self.compile_shortcut.activated.connect(self.compile)
         logger.info(f"Registered Qt Shortcuts")
 
+    def select_map_dialog(self) -> None:
+        """
+        Show dialog for selecting mod map directory.
+        """
+        try:
+            config_manager = ConfigManager()
+            config_manager.read_config()
+            home_dir = config_manager.map_directory
+            dir_name = QFileDialog.getExistingDirectory(self.view, "Select map dir", home_dir)
+            config_manager.map_directory = dir_name
+        except Exception as err:
+            logger.info(f"Map Directory Dialog Error\n\t"
+                        f"{err}")
+
     # def save(self):
     #     logger.info(f"Saving data")
     #     for controller in self.controllers:
@@ -182,6 +204,7 @@ class AppController:
         Compiles current data in the database into an ini file for use in Red Alert.
         """
         logger.info(f"Compiling mods")
+        Compiler(self.model)
         # if self.config_manager.map_directory is None:
         #     self.showDialog()
         # try:
@@ -305,32 +328,24 @@ class AppController:
             raise err
 
 
-class DbDiff:
+class Compiler:
 
     def __init__(self, model):
         self.model = model
-        self._tables = None
+        self._tables = get_all_db_table_pairs()
+        for default, custom in self._tables:
+            print(self.check_custom_vs_defaults(default, custom))
 
-    def tables(self) -> list:
-        """
-        Lazy init property, gets the table names of the database.
+    def clean_table_data(self, table):
+        raise Exception("Finish me off.")
+        remove_list = ["Id"]
+        data = self.model.query(table)
+        # custom = self.model.query_first(custom_table, Name=self.name)
+        table = {key: value.__dict__ for  in data if key[0] != "_"}
+        for item in remove_list:
+            table.pop(item)
 
-        :return: List of the DB table names.
-        """
-        if self._tables is None:
-
-            tables = set("_".join(self.model.tables().keys()).split("_"))
-
-            remove_list = ["custom", "default"]
-            for item in remove_list:
-                try:
-                    tables.remove(item)
-                except KeyError:
-                    pass
-
-            self._tables = list(tables)
-
-        return self._tables
+        return table
 
     def check_custom_vs_defaults(self, default_table, custom_table) -> list:
         """
@@ -338,17 +353,25 @@ class DbDiff:
 
         :return: The names of the items that are different.
         """
-        default_table, custom_table = self.get_current_data(remove_instance_data=True)
+        # default_table = {key: value for key, value in default_table.__dict__.items() if key[0] != "_"}
+        # custom_table = {key: value for key, value in custom_table.__dict__.items() if key[0] != "_"}
+        import pprint
+        default_table = self.clean_table_data(default_table)
+        custom_table = self.clean_table_data(custom_table)
 
         names = []
+        # pprint.pprint(default_table)
+
 
         # XOR operation to keep only elements that are different.
-        unmatched_item = set(default_table.__dict__.items()) ^ set(custom_table.__dict__.items())
+        unmatched_item = set(default_table.items()) ^ set(custom_table.items())
+        print(unmatched_item)
 
         # If there is a difference.
         if len(unmatched_item):
             # Get the name of the feature that is different.
             for item in unmatched_item:
+                # print(item)
                 names.append(item[0])
 
         return list(set(names))

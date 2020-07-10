@@ -34,7 +34,7 @@ def reset_database():
         db.init_tables()
     except Exception as err:
         logger.error(f"Database population failed - {err}")
-        
+
     base_path = os.environ["RA_RESOURCE_PATH"]
 
     res_list = [
@@ -56,25 +56,21 @@ def reset_database():
 
     for path, orm in res_list:
         add_data(f"{base_path}/{path}", orm)
-        
+
     logger.info(f"Database reset")
 
-    # add_data(f"{base_path}/unit_statistics/buildings.ini", BuildingsDefault)
-    # add_data(f"{base_path}/unit_statistics/buildings.ini", BuildingsCustom)
-    # add_data(f"{base_path}/unit_statistics/aircraft.ini", AircraftDefault)
-    # add_data(f"{base_path}/unit_statistics/aircraft.ini", AircraftCustom)
-    # add_data(f"{base_path}/unit_statistics/vehicles.ini", VehiclesDefault)
-    # add_data(f"{base_path}/unit_statistics/vehicles.ini", VehiclesCustom)
-    # add_data(f"{base_path}/unit_statistics/infantry.ini", InfantryDefault)
-    # add_data(f"{base_path}/unit_statistics/infantry.ini", InfantryCustom)
-    # add_data(f"{base_path}/unit_statistics/ships.ini", ShipsDefault)
-    # add_data(f"{base_path}/unit_statistics/ships.ini", ShipsCustom)
-    # add_data(f"{base_path}/country_statistics.ini", CountryDefaults)
-    # add_data(f"{base_path}/country_statistics.ini", CountryCustom)
-    # add_data(f"{base_path}/general.ini", GeneralDefaults)
-    # add_data(f"{base_path}/general.ini", GeneralCustom)
+
+def get_all_db_table_pairs():
+    return [
+        (AircraftDefault, AircraftCustom),
+        (BuildingsDefault, BuildingsCustom),
+        (InfantryDefault, InfantryCustom),
+        (ShipsDefault, ShipsCustom),
+        (VehiclesDefault, VehiclesCustom),
+        (CountryDefaults, CountryCustom),
+        (GeneralDefaults, GeneralCustom)
+    ]
 
 
 if __name__ == '__main__':
-    print("Hi")
     reset_database()
