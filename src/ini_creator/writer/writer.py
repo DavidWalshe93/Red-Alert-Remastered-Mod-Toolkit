@@ -8,7 +8,7 @@ import logging
 
 from configparser import ConfigParser
 
-from src.db_driver.helpers.db_helper import DBHelper
+from src.model.helpers.db_helper import DBHelper
 from src.config.config_manager import ConfigManager
 
 logger = logging.getLogger(__name__)

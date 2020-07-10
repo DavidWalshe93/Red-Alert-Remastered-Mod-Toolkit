@@ -1,0 +1,1895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>871</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>CNC - Red Alert Remastered Mod Generator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../../resources.qrc">
+    <normaloff>:/icons/res/icons/app_icon.ico</normaloff>:/icons/res/icons/app_icon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTabWidget" name="generalTabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>900</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>General</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string>Economy Options</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_6">
+             <property name="horizontalSpacing">
+              <number>40</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="bailCountLabel">
+               <property name="text">
+                <string>Harvester Bail Count</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="bailCountSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="value">
+                <number>28</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>bail_count</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="buildSpeedLabel">
+               <property name="text">
+                <string>Build Speed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="buildSpeedSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>build_speed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="goldValueLabel">
+               <property name="text">
+                <string>Gold Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QSpinBox" name="goldValueSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>gold_value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="gemValueLabel">
+               <property name="text">
+                <string>Gem Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QSpinBox" name="gemValueSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>gem_value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="growthRateLabel">
+               <property name="text">
+                <string>Ore Growth Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QSpinBox" name="growthRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>growth_rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="oreGrowsLabel">
+               <property name="text">
+                <string>Ore Grows</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QCheckBox" name="oreGrowsCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_grows</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="oreSpreadsLabel">
+               <property name="text">
+                <string>Ore Spreads</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QCheckBox" name="oreSpreadsCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_spreads</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="oreTruckRateLabel">
+               <property name="text">
+                <string>Ore Truck Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QDoubleSpinBox" name="oreTruckRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ore_truck_rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="separateAircraftLabel">
+               <property name="text">
+                <string>Separate Aircraft</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1">
+              <widget class="QCheckBox" name="separateAircraftCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>separate_aircraft</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="survivorRateLabel">
+               <property name="text">
+                <string>Survivor Rate</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="QDoubleSpinBox" name="survivorRateSpinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>survivor_rate</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="groupBox_3">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="units_tab">
+         <attribute name="title">
+          <string>Units</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="commonUnitGroupBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="title">
+             <string>Common Unit and Building Settings</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_2">
+             <property name="horizontalSpacing">
+              <number>40</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="unitTypeLabel">
+               <property name="text">
+                <string>Type</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="unitTypeComboBox">
+               <property name="toolTip">
+                <string>Select the unit or structure class type to edit.</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Infantry</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Vehicles</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Ships</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Aircraft</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Buildings</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="unitLabel">
+               <property name="text">
+                <string>Unit</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="unitComboBox">
+               <property name="toolTip">
+                <string>Select the unit or structure to edit.</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="ammoLabel">
+               <property name="text">
+                <string>Ammo</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QSpinBox" name="ammoSpinBox">
+               <property name="toolTip">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Number of rounds carried between reloads [-1 means unlimited] (def=-1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="whatsThis">
+                <string>Hey There</string>
+               </property>
+               <property name="minimum">
+                <number>-1</number>
+               </property>
+               <property name="maximum">
+                <number>10</number>
+               </property>
+               <property name="value">
+                <number>-1</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>ammo</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="armorLabel">
+               <property name="text">
+                <string>Armor</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QComboBox" name="armorComboBox">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The armor type of this object [&lt;/p&gt;&lt;p&gt;	none (0),&lt;/p&gt;&lt;p&gt;	wood (1),&lt;/p&gt;&lt;p&gt;	light (2),&lt;/p&gt;&lt;p&gt;	heavy, (3)&lt;/p&gt;&lt;p&gt;	concrete (4)&lt;/p&gt;&lt;p&gt;] (def=none)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>armor</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string comment="No Armor" extracomment="No Armor">none</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>wood</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>light</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>heavy</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>concrete</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="cloakableLabel">
+               <property name="text">
+                <string>Cloakable</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QCheckBox" name="cloakableCheckBox">
+               <property name="font">
+                <font>
+                 <pointsize>19</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Is it equipped with a cloaking device (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>cloakable</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="costLabel">
+               <property name="text">
+                <string>Cost</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QSpinBox" name="costSpinBox">
+               <property name="toolTip">
+                <string>Cost to build object (in credits)</string>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>10000</number>
+               </property>
+               <property name="singleStep">
+                <number>50</number>
+               </property>
+               <property name="value">
+                <number>1000</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>cost</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="doubleOwnedLabel">
+               <property name="text">
+                <string>Double Owned</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QCheckBox" name="doubleOwnedCheckBox">
+               <property name="toolTip">
+                <string>Can be built/owned by all countries in a multiplayer game (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>double_owned</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="explodesLabel">
+               <property name="text">
+                <string>Explodes</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QCheckBox" name="explodesCheckBox">
+               <property name="toolTip">
+                <string>Does it explode violently when destroyed [i.e., does it do collateral damage] (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>explodes</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="guardRangeLabel">
+               <property name="text">
+                <string>Guard Range</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1">
+              <widget class="QSpinBox" name="guardRangeSpinBox">
+               <property name="toolTip">
+                <string>Distance to scan for enemies to attack (def=use weapon range)</string>
+               </property>
+               <property name="minimum">
+                <number>-1</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>-1</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>guard_range</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="imageLabel">
+               <property name="text">
+                <string>Image</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="QComboBox" name="imageComboBox">
+               <property name="toolTip">
+                <string>Name of graphic data to use for this object (def=same as object identifier)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>image</string>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="0">
+              <widget class="QLabel" name="invisibleLabel">
+               <property name="text">
+                <string>Invisible</string>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="1">
+              <widget class="QCheckBox" name="invisibleCheckBox">
+               <property name="toolTip">
+                <string>Is completely and always invisible to enemy (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>invisible</string>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="0">
+              <widget class="QLabel" name="ownerLabel">
+               <property name="text">
+                <string>Owner</string>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="1">
+              <widget class="QComboBox" name="ownerComboBox">
+               <property name="toolTip">
+                <string>Who can build this [Allies or Soviet] (def=&quot;allies,soviet&quot;, i.e., all)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>owner</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>allies,soviet</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>allies</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>soviet</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="12" column="0">
+              <widget class="QLabel" name="pointsLabel">
+               <property name="text">
+                <string>Points</string>
+               </property>
+              </widget>
+             </item>
+             <item row="12" column="1">
+              <widget class="QSpinBox" name="pointsSpinBox">
+               <property name="toolTip">
+                <string>Point value for scoring purposes (def=0)</string>
+               </property>
+               <property name="maximum">
+                <number>1000</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>points</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="0">
+              <widget class="QLabel" name="prerequisiteLabel">
+               <property name="text">
+                <string>Prerequisite</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="1">
+              <widget class="QLineEdit" name="prerequisiteLineEdit">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>List of extra needed before this can be manufactured (def=no requirement)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>prerequiste</string>
+               </property>
+              </widget>
+             </item>
+             <item row="14" column="0">
+              <widget class="QLabel" name="primaryLabel">
+               <property name="text">
+                <string>Primary</string>
+               </property>
+              </widget>
+             </item>
+             <item row="14" column="1">
+              <widget class="QComboBox" name="primaryComboBox">
+               <property name="toolTip">
+                <string>Primary weapon equipped with (def=none)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>primary</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Colt45</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>none</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ZSU-23</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Vulcan</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Maverick</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Camera</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>FireballLauncher</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Flamer</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Sniper</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ChainGun</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Pistol</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>M1Carbine</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dragon</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Hellfire</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Grenade</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>75mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>90mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>105mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>120mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TurretGun</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>MammothTusk</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>155mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>M60mg</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Napalm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TeslaZap</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Nike</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>RedEye</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>8Inch</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Stinger</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TorpTube</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>2Inch</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DepthCharge</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ParaBomb</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DogJaw</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Heal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>SCUD</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Mandible</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="15" column="0">
+              <widget class="QLabel" name="secondaryLabel">
+               <property name="text">
+                <string>Secondary</string>
+               </property>
+              </widget>
+             </item>
+             <item row="15" column="1">
+              <widget class="QComboBox" name="secondaryComboBox">
+               <property name="toolTip">
+                <string>Secondary weapon equipped with (def=none)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>secondary</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Colt45</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ZSU-23</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Vulcan</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Maverick</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Camera</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>FireballLauncher</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Flamer</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Sniper</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ChainGun</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Pistol</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>M1Carbine</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dragon</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Hellfire</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Grenade</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>75mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>90mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>none</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>105mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>120mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TurretGun</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>MammothTusk</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>155mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>New Item</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>M60mg</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Napalm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TeslaZap</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Nike</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>RedEye</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>8Inch</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Stinger</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TorpTube</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>2Inch</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DepthCharge</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ParaBomb</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DogJaw</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Heal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>SCUD</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Mandible</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="16" column="0">
+              <widget class="QLabel" name="rotLabel">
+               <property name="text">
+                <string>ROT</string>
+               </property>
+              </widget>
+             </item>
+             <item row="16" column="1">
+              <widget class="QSpinBox" name="rotSpinBox">
+               <property name="toolTip">
+                <string>Rate Of Turn for body (if present) and turret (if present) (def=0)</string>
+               </property>
+               <property name="maximum">
+                <number>10</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>rot</string>
+               </property>
+              </widget>
+             </item>
+             <item row="17" column="0">
+              <widget class="QLabel" name="reloadLabel">
+               <property name="text">
+                <string>Reload</string>
+               </property>
+              </widget>
+             </item>
+             <item row="17" column="1">
+              <widget class="QSpinBox" name="reloadSpinBox">
+               <property name="toolTip">
+                <string>Time delay between reloads (def=0)</string>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>reload</string>
+               </property>
+              </widget>
+             </item>
+             <item row="18" column="0">
+              <widget class="QLabel" name="selfHealingLabel">
+               <property name="text">
+                <string>Self Healing</string>
+               </property>
+              </widget>
+             </item>
+             <item row="18" column="1">
+              <widget class="QCheckBox" name="selfHealingCheckBox">
+               <property name="toolTip">
+                <string>Does the object heal automatically up to half strength (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>self_healing</string>
+               </property>
+              </widget>
+             </item>
+             <item row="19" column="0">
+              <widget class="QLabel" name="sightLabel">
+               <property name="text">
+                <string>Sight</string>
+               </property>
+              </widget>
+             </item>
+             <item row="19" column="1">
+              <widget class="QSpinBox" name="sightSpinBox">
+               <property name="toolTip">
+                <string>Sight range, in cells (def=1)</string>
+               </property>
+               <property name="maximum">
+                <number>20</number>
+               </property>
+               <property name="value">
+                <number>1</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>sight</string>
+               </property>
+              </widget>
+             </item>
+             <item row="20" column="0">
+              <widget class="QLabel" name="strengthLabel">
+               <property name="text">
+                <string>Health</string>
+               </property>
+              </widget>
+             </item>
+             <item row="20" column="1">
+              <widget class="QSpinBox" name="strengthSpinBox">
+               <property name="statusTip">
+                <string>Health of this object (aka Strength in .ini file)</string>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>2000</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>strength</string>
+               </property>
+              </widget>
+             </item>
+             <item row="21" column="0">
+              <widget class="QLabel" name="techLevelLabel">
+               <property name="text">
+                <string>Tech Level</string>
+               </property>
+              </widget>
+             </item>
+             <item row="21" column="1">
+              <widget class="QSpinBox" name="techLevelSpinBox">
+               <property name="statusTip">
+                <string>Tech level required to build this [-1 means can't build] (def=-1)</string>
+               </property>
+               <property name="minimum">
+                <number>-1</number>
+               </property>
+               <property name="maximum">
+                <number>11</number>
+               </property>
+               <property name="value">
+                <number>-1</number>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>tech_level</string>
+               </property>
+              </widget>
+             </item>
+             <item row="22" column="0">
+              <widget class="QLabel" name="sensorsLabel">
+               <property name="text">
+                <string>Sensors</string>
+               </property>
+              </widget>
+             </item>
+             <item row="22" column="1">
+              <widget class="QCheckBox" name="sensorsCheckBox">
+               <property name="statusTip">
+                <string>Has sensors to detect nearby cloaked objects (def=no)?</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="property_name" stdset="0">
+                <string>sensors</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item row="1" column="1">
+             <widget class="QGroupBox" name="structuresGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Structures</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_4">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="baseNormalLabel">
+                 <property name="text">
+                  <string>Base Normal </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="baseNormalCheckBox">
+                 <property name="toolTip">
+                  <string>Considered for building adjacency checks (def=yes)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>base_normal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="adjacentLabel">
+                 <property name="text">
+                  <string>Adjacent</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="adjacentSpinBox">
+                 <property name="toolTip">
+                  <string>Distance allowed to place from other buildings (def=1)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>adjacent</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="bibLabel">
+                 <property name="text">
+                  <string>Bib</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="bibCheckBox">
+                 <property name="toolTip">
+                  <string>Should the building have an attached bib (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>bib</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="capturableLabel">
+                 <property name="text">
+                  <string>Capturable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="capturableCheckBox">
+                 <property name="toolTip">
+                  <string>Can this building be infiltrated by a spy/engineer (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>capturable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="crewedLabel">
+                 <property name="text">
+                  <string>Crewed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="crewedCheckBox">
+                 <property name="toolTip">
+                  <string>Does it contain a crew that can escape (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>crewed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="powerLabel">
+                 <property name="text">
+                  <string>Power</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QSpinBox" name="powerSpinBox">
+                 <property name="toolTip">
+                  <string>Power output [positive for output, negative for drain] (def=0)</string>
+                 </property>
+                 <property name="minimum">
+                  <number>-20000</number>
+                 </property>
+                 <property name="maximum">
+                  <number>20000</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>20</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>power</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="poweredLabel">
+                 <property name="text">
+                  <string>Powered</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QCheckBox" name="poweredCheckBox">
+                 <property name="toolTip">
+                  <string>Does it require power to function (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>powered</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="repairableLabel">
+                 <property name="text">
+                  <string>Repairable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QCheckBox" name="repairableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be repaired (def=yes)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>repairable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="storageLabel">
+                 <property name="text">
+                  <string>Storage</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="0">
+                <widget class="QLabel" name="unsellableLabel">
+                 <property name="text">
+                  <string>Unsellable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <widget class="QCheckBox" name="unsellableCheckBox">
+                 <property name="toolTip">
+                  <string>Cannot sell this building (even if it can be built)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>unsellable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0">
+                <widget class="QLabel" name="waterBoundLabel">
+                 <property name="text">
+                  <string>Water Bound</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="1">
+                <widget class="QCheckBox" name="waterBoundCheckBox">
+                 <property name="toolTip">
+                  <string>Is this building placed on water only (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>water_bound</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1">
+                <widget class="QSpinBox" name="storageSpinBox">
+                 <property name="toolTip">
+                  <string>The number of credits this building can store (def=0)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>500</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>storage</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="infantryGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Infantry</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="c4Label">
+                 <property name="text">
+                  <string>C4</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="c4CheckBox">
+                 <property name="statusTip">
+                  <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>c4</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="fraidycatLabel">
+                 <property name="text">
+                  <string>Fraidycat</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="fraidycatCheckBox">
+                 <property name="statusTip">
+                  <string>Is it inherently afraid and will panic easily (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>fraidycat</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="infiltrateLabel">
+                 <property name="text">
+                  <string>Infiltrate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="infiltrateCheckBox">
+                 <property name="statusTip">
+                  <string>Can it enter a building like a spy or thief (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>infiltrate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="isCanineCheckBox">
+                 <property name="statusTip">
+                  <string>Should special case dog logic be applied to this?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>is_canine</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="isCanineLabel">
+                 <property name="text">
+                  <string>Is Canine</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QGroupBox" name="vehiclesGroupBox">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Vehicles</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_5">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="crushableLabel">
+                 <property name="text">
+                  <string>Crushable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="crushableCheckBox">
+                 <property name="toolTip">
+                  <string>Can it be crushed by a heavy tracked vehicle (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>crushable</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="trackedLabel">
+                 <property name="text">
+                  <string>Tracked</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="trackedCheckBox">
+                 <property name="toolTip">
+                  <string>Is this vehicle tracked [as opposed to wheeled] (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>tracked</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="noMovingFireLabel">
+                 <property name="text">
+                  <string>NoMovingFire</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="noMovingFireCheckBox">
+                 <property name="toolTip">
+                  <string>The vehicle must stop before it can fire (def=no)?</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>no_moving_fire</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="unitsGroupBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>Units</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_3">
+               <property name="horizontalSpacing">
+                <number>40</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="passengersLabel">
+                 <property name="text">
+                  <string>Passengers</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QSpinBox" name="passengersSpinBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>30</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>Number of passengers it may carry (def=0)</string>
+                 </property>
+                 <property name="statusTip">
+                  <string/>
+                 </property>
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>passengers</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="speedLabel">
+                 <property name="text">
+                  <string>Speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="speedSpinBox">
+                 <property name="toolTip">
+                  <string>Speed of this object (def=0)</string>
+                 </property>
+                 <property name="maximum">
+                  <number>50</number>
+                 </property>
+                 <property name="property_name" stdset="0">
+                  <string>speed</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>920</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionCompile"/>
+    <addaction name="actionSelectMapFolder"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuReset">
+    <property name="title">
+     <string>Reset</string>
+    </property>
+    <addaction name="actionResetDatabase"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuReset"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCompile">
+   <property name="icon">
+    <iconset resource="../../../../resources.qrc">
+     <normaloff>:/icons/res/icons/compile.ico</normaloff>:/icons/res/icons/compile.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Compile</string>
+   </property>
+   <property name="iconText">
+    <string>Compile</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="actionSelectMapFolder">
+   <property name="text">
+    <string>Select Map Folder</string>
+   </property>
+  </action>
+  <action name="actionResetDatabase">
+   <property name="text">
+    <string>Reset Database</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../../../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
