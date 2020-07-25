@@ -4,6 +4,7 @@ Date:       29 June 2020
 """
 import os
 import logging
+import sys
 
 from src.ini_creator.parser.parser import IniParser
 from src.model.db_manager import DBManager
@@ -58,6 +59,17 @@ def reset_database():
         add_data(f"{base_path}/{path}", orm)
 
     logger.info(f"Database reset")
+
+
+def table_from_string(classname):
+    _class = getattr(sys.modules.get(__name__), classname)
+
+    if _class is None:
+        err = f"Classname {classname} does not map to any known ORM class."
+        logger.info(err)
+        raise ValueError(err)
+
+    return _class
 
 
 def get_all_db_table_pairs():
