@@ -45,11 +45,11 @@ class EconomyController(CoreController, ABC):
 
     @property
     def growth_rate(self):
-        return self.view.growthRateSpinBox.value()
+        return self.view.growthRateDoubleSpinBox.value()
 
     @growth_rate.setter
     def growth_rate(self, value: General):
-        self.view.growthRateSpinBox.setValue(value.GrowthRate)
+        self.view.growthRateDoubleSpinBox.setValue(value.GrowthRate)
 
     @property
     def ore_grows(self):

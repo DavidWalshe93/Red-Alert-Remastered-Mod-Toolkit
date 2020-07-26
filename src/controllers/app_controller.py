@@ -33,9 +33,6 @@ from src.model.db_utils import reset_database
 # Config_manager
 from src.config.config_manager import ConfigManager
 
-# Database utils
-from src.model.db_utils import get_all_db_table_pairs, table_from_string
-
 # MPR compiler
 from src.compiler.compiler import Compiler
 
@@ -158,6 +155,9 @@ def remove_sa_instance_state(method: callable) -> callable:
 class AppController:
 
     def __init__(self):
+        """
+        Main controller for the application.
+        """
         self.view = None
         self.model = None
         self.controllers = []
@@ -171,41 +171,69 @@ class AppController:
             "unitTypeComboBox"
         ]
 
+    @staticmethod
+    def create_view() -> MainWindow:
+        """
+        Creates a view object for the application.
+
+        :return: The created view object.
+        """
+        view = MainWindow()
+        view.show()
+
+        return view
+
+    @staticmethod
+    def create_model() -> DBManager:
+        """
+        Creates a DBManager object for the application.
+
+        :return: The created DBManager object.
+        """
+        db = DBManager()
+
+        return db
+
     def bind_controller_slots(self) -> None:
         """
-        Abstract method used to bind slots in the view.
+        Used to bind slots in the view.
         """
+        logger.info(f"Registering Qt Slots...")
         self.view.actionCompile.triggered.connect(self.compile)
         self.view.actionResetDatabase.triggered.connect(reset_database)
         self.view.actionSelectMapFolder.triggered.connect(self.select_map_dialog)
         self.bind_auto_save()
-        logger.info(f"Registered Qt Slots")
+        logger.info(f"Qt Slots Registered.")
 
     def bind_controller_shortcuts(self) -> None:
         """
-        Abstract method used to bind shortcuts to the view.
+        Used to bind shortcuts to the view.
         """
+        logger.info(f"Registering Qt Shortcuts...")
         self.compile_shortcut = QShortcut(QtGui.QKeySequence('Alt+C'), self.view)
         self.compile_shortcut.activated.connect(self.compile)
-        logger.info(f"Registered Qt Shortcuts")
+        logger.info(f"Qt Shortcuts Registered.")
 
     def select_map_dialog(self) -> None:
         """
         Show dialog for selecting mod map directory.
         """
-        try:
-            self.config_manager.read_config()
-            home_dir = self.config_manager.map_directory
-            dir_name = QFileDialog.getExistingDirectory(self.view, "Select map dir", home_dir)
-            self.config_manager.map_directory = dir_name
-        except Exception as err:
-            logger.info(f"Map Directory Dialog Error\n\t"
-                        f"{err}")
+        dir_name = self.select_directory_dialog("Select RA Map Directory", self.config_manager.map_directory)
+        self.config_manager.map_directory = dir_name
 
-    # def save(self):
-    #     logger.info(f"Saving data")
-    #     for controller in self.controllers:
-    #         controller.update_model()
+    def select_directory_dialog(self, title: str, base_dir: str):
+        """
+        Opens a Dialog to select a filesystem directory and returns the directory path selected.
+
+        :param title: The title for the directory select dialog.
+        :param base_dir: The dir to open the dialog in initially.
+        :return: The user selected directory.
+        """
+        try:
+            return QFileDialog.getExistingDirectory(self.view, title, base_dir)
+        except Exception as err:
+            logger.error(f"Directory Selection Dialog Error\n\t"
+                         f"{err}")
 
     def compile(self):
         """
@@ -214,35 +242,23 @@ class AppController:
         logger.info(f"Compiling mods")
         compiler = Compiler(self.model, self.config_manager.map_directory)
         compiler.compile()
-        # if self.config_manager.map_directory is None:
-        #     self.showDialog()
-        # try:
-        #     logger.info("Compiling mods...")
-        #     ini_writer = IniWriter()
-        #     ini_writer.build()
-        #     logger.info("Mod files compiled")
-        # except Exception as err:
-        #     print(err)
 
     def populate_data(self) -> None:
+        """
+        Runs through all controllers of the application anc populates the data into their controlled fields.
+        """
         for controller in self.controllers:
             controller.populate_data()
 
     @staticmethod
-    def create_view():
-        view = MainWindow()
-        view.show()
-
-        return view
-
-    @staticmethod
-    def create_model():
-        db = DBManager()
-
-        return db
-
-    @staticmethod
     def create_controllers(view: MainWindow, model: DBManager) -> list:
+        """
+        Creates and adds all sub controllers to the application.
+
+        :param view: The view for the application.
+        :param model: The model for the application.
+        :return: A list of controllers.
+        """
         controllers_classes = []
 
         controllers_classes.append(GeneralController)
@@ -255,7 +271,12 @@ class AppController:
         return controllers
 
     def bind_auto_save(self):
+        """
+        Attaches a callback to all data specific widget so on a value change, the data is wrote to the database.
+        """
+        # for all widgets in the view.
         for attrib_name in dir(self.view):
+            # Exclude some non-data specific widgets.
             if attrib_name not in self.exclusion_widgets:
                 attrib = self.view.__getattribute__(attrib_name)
                 if isinstance(attrib, QDoubleSpinBox):
@@ -267,36 +288,69 @@ class AppController:
                 elif isinstance(attrib, QComboBox):
                     self.view.__getattribute__(attrib_name).currentTextChanged.connect(self.update_model_on_change)
 
-    def update_model(self, column: str, controller: Controller):
+    @inject_model_data
+    def update_model_on_change(self, column, controller, widget_name) -> None:
+        """
+        Updated the view and model(DB) when a widget change occurs.
+
+        :param column: The column to change in the data.
+        :param controller: The controller to use for the transaction.
+        :param widget_name: The name of the widget that changed.
+        """
+        self.update_model(column, controller)
+        self.update_view(controller, column, widget_name)
+
+    def update_model(self, column: str, controller: Controller) -> None:
+        """
+        Updates the model after a widget change.
+
+        :param column: The column to change.
+        :param controller: The controller responsible for the widget.
+        """
         try:
             result = self.model.query_first(controller.table, Name=controller.name)
+            if type(controller.value) is float:
+                value = round(controller.value, 2)
+            else:
+                value = controller.value
 
-            result.__setattr__(column, controller.value)
+            result.__setattr__(column, value)
 
             self.model.update(result)
-            logger.info(f"Saved: {column} [{controller.value}]")
+            logger.info(f"Saved: {column} [{value}]")
         except Exception as err:
-            logger.error(f"Model Update error - {err}")
+            logger.error(f"Model Update error for {column} [{value}] - {err}")
 
     @composed(inject_table_objects, remove_sa_instance_state, inject_table_dicts)
-    def update_view(self, default, custom, column, widget_name):
+    def update_view(self, default, custom, column, widget_name) -> None:
+        """
+        Updates the view after a widget change.
+        :param default: The default value in the Model.
+        :param custom: The custom value in the Model.
+        :param column: The column being looked at.
+        :param widget_name: The name of the widget to update.
+        """
         if default[column] != custom[column]:
             self.view.set_custom_view(widget_name)
         else:
             self.view.set_default_view(widget_name)
 
-    @inject_model_data
-    def update_model_on_change(self, column, controller, widget_name):
-        self.update_model(column, controller)
-        self.update_view(controller, column, widget_name)
-
     @staticmethod
     def get_column(sender: QWidget):
-        widget_suffices = ["SpinBox", "CheckBox", "ComboBox"]
+        """
+        Helper method to get the name of a column from its widgets object name.
+
+        :param sender: The sender widget, where the signal came from.
+        :return: The name of the column to get data from.
+        """
+        widget_suffices = ["DoubleSpinBox", "SpinBox", "CheckBox", "ComboBox"]
         obj_name = sender.objectName()
+
+        # Remove the suffices from the widget name.
         for widget in widget_suffices:
             obj_name = obj_name.replace(widget, "")
 
+        # Get the column name.
         column = f"{obj_name[0].upper()}{obj_name[1:]}"
 
         return column
@@ -317,6 +371,9 @@ class AppController:
         raise AttributeError(f"{attribute} does not exist for any controller objects")
 
     def run(self):
+        """
+        Entry point for application.
+        """
         try:
             app = QApplication([])
             self.view = self.create_view()

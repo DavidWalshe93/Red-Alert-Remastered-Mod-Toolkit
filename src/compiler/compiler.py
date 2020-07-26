@@ -3,8 +3,12 @@ Author:     David Walshe
 Date:       26 July 2020
 """
 
+import os
 import pprint
 from configparser import ConfigParser
+
+# Database utils
+from src.model.db_utils import get_all_db_table_pairs, table_from_string
 
 
 class Linker:
@@ -118,7 +122,7 @@ class Compiler:
             out_file = self.output_file_name(mpr_file)
             with open(out_file, "w") as fh:
                 self.writer.write(fh)
-                #fh.write(content)
+                fh.write(content)
 
     def build(self):
         for key, data in self.linker.linked_data.items():
@@ -160,6 +164,7 @@ class Compiler:
             mpr_files = [file for file in mpr_files if file.find(self.NURPLE_POSTFIX) == -1]
 
             return mpr_files
+
         except OSError as err:
             logger.error(f"Could not get map directory contents.\n\t"
                          f"User config: {ConfigManager().config}\n\t"

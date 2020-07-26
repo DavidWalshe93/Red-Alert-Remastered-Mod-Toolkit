@@ -62,6 +62,7 @@ class ConfigManager(metaclass=Singleton):
 
     @property
     def map_directory(self):
+        self.read_config()
         return self.get_config("map_directory")
 
     @map_directory.setter
