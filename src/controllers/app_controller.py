@@ -371,22 +371,27 @@ class AppController:
 
         raise AttributeError(f"{attribute} does not exist for any controller objects")
 
-    def run(self):
+    def setup(self) -> None:
+        """
+        Sets up the application before launching it.
+        """
+        self.view = self.create_view()
+        self.model = self.create_model()
+        self.controllers = self.create_controllers(self.view, self.model)
+
+        for controller in self.controllers:
+            controller.populate_data()
+
+        self.bind_controller_slots()
+        self.bind_controller_shortcuts()
+
+    def run(self) -> None:
         """
         Entry point for application.
         """
         try:
             app = QApplication([])
-            self.view = self.create_view()
-            self.model = self.create_model()
-            self.controllers = self.create_controllers(self.view, self.model)
-
-            for controller in self.controllers:
-                controller.populate_data()
-
-            self.bind_controller_slots()
-            self.bind_controller_shortcuts()
-
+            self.setup()
             app.exec_()
         except Exception as err:
             logger.error(f"{err}")

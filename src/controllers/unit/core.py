@@ -105,11 +105,11 @@ class CoreController(Controller, ABC):
 
     @property
     def guard_range(self):
-        return None if self.view.guardRangeSpinBox.value() == -1 else self.view.guardRangeSpinBox.value()
+        return None if self.view.guardRangeSpinBox.value() == 0 else self.view.guardRangeSpinBox.value()
 
     @guard_range.setter
     def guard_range(self, value: UnitStructureType):
-        value = value.GuardRange if value.GuardRange is not None else -1
+        value = value.GuardRange if value.GuardRange is not None else 0
         self.view.guardRangeSpinBox.setValue(value)
 
     @property

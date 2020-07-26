@@ -156,6 +156,9 @@
                  <height>20</height>
                 </size>
                </property>
+               <property name="minimum">
+                <number>5</number>
+               </property>
                <property name="maximum">
                 <number>1000</number>
                </property>
@@ -182,10 +185,16 @@
                  <height>20</height>
                 </size>
                </property>
+               <property name="minimum">
+                <number>5</number>
+               </property>
                <property name="maximum">
                 <number>2500</number>
                </property>
                <property name="singleStep">
+                <number>5</number>
+               </property>
+               <property name="value">
                 <number>5</number>
                </property>
                <property name="property_name" stdset="0">
@@ -412,12 +421,17 @@
                </property>
                <item>
                 <property name="text">
-                 <string>Infantry</string>
+                 <string>Aircraft</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>Vehicles</string>
+                 <string>Buildings</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Infantry</string>
                 </property>
                </item>
                <item>
@@ -427,12 +441,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>Aircraft</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Buildings</string>
+                 <string>Vehicles</string>
                 </property>
                </item>
               </widget>
@@ -477,7 +486,7 @@ p, li { white-space: pre-wrap; }
                 <number>10</number>
                </property>
                <property name="value">
-                <number>-1</number>
+                <number>0</number>
                </property>
                <property name="property_name" stdset="0">
                 <string>ammo</string>
@@ -570,7 +579,7 @@ p, li { white-space: pre-wrap; }
                 <string>Cost to build object (in credits)</string>
                </property>
                <property name="minimum">
-                <number>0</number>
+                <number>50</number>
                </property>
                <property name="maximum">
                 <number>10000</number>
@@ -651,13 +660,13 @@ p, li { white-space: pre-wrap; }
                 <string>Distance to scan for enemies to attack (def=use weapon range)</string>
                </property>
                <property name="minimum">
-                <number>-1</number>
+                <number>0</number>
                </property>
                <property name="maximum">
                 <number>100</number>
                </property>
                <property name="value">
-                <number>-1</number>
+                <number>0</number>
                </property>
                <property name="property_name" stdset="0">
                 <string>guard_range</string>
