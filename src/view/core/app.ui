@@ -47,7 +47,7 @@
          </font>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -212,7 +212,7 @@
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>20</height>
+                 <height>22</height>
                 </size>
                </property>
                <property name="text">
@@ -235,7 +235,7 @@
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>20</height>
+                 <height>22</height>
                 </size>
                </property>
                <property name="text">
@@ -287,7 +287,7 @@
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>20</height>
+                 <height>22</height>
                 </size>
                </property>
                <property name="text">
@@ -535,6 +535,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="4" column="1">
               <widget class="QCheckBox" name="cloakableCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>19</pointsize>
@@ -589,6 +595,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="6" column="1">
               <widget class="QCheckBox" name="doubleOwnedCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>Can be built/owned by all countries in a multiplayer game (def=no)?</string>
                </property>
@@ -609,6 +621,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="7" column="1">
               <widget class="QCheckBox" name="explodesCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>Does it explode violently when destroyed [i.e., does it do collateral damage] (def=no)?</string>
                </property>
@@ -1210,6 +1228,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="18" column="1">
               <widget class="QCheckBox" name="selfHealingCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>Does the object heal automatically up to half strength (def=no)?</string>
                </property>
@@ -1302,6 +1326,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="22" column="1">
               <widget class="QCheckBox" name="sensorsCheckBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
                <property name="statusTip">
                 <string>Has sensors to detect nearby cloaked objects (def=no)?</string>
                </property>
@@ -1353,6 +1383,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="baseNormalCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Considered for building adjacency checks (def=yes)?</string>
                  </property>
@@ -1393,6 +1429,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="bibCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Should the building have an attached bib (def=no)?</string>
                  </property>
@@ -1413,6 +1455,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="3" column="1">
                 <widget class="QCheckBox" name="capturableCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Can this building be infiltrated by a spy/engineer (def=no)?</string>
                  </property>
@@ -1433,6 +1481,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="4" column="1">
                 <widget class="QCheckBox" name="crewedCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Does it contain a crew that can escape (def=no)?</string>
                  </property>
@@ -1479,6 +1533,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="6" column="1">
                 <widget class="QCheckBox" name="poweredCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Does it require power to function (def=no)?</string>
                  </property>
@@ -1499,6 +1559,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="7" column="1">
                 <widget class="QCheckBox" name="repairableCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Can it be repaired (def=yes)?</string>
                  </property>
@@ -1529,6 +1595,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="9" column="1">
                 <widget class="QCheckBox" name="unsellableCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Cannot sell this building (even if it can be built)?</string>
                  </property>
@@ -1549,6 +1621,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="10" column="1">
                 <widget class="QCheckBox" name="waterBoundCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Is this building placed on water only (def=no)?</string>
                  </property>
@@ -1611,6 +1689,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="c4CheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="statusTip">
                   <string>Equipped with building sabotage explosives [presumes Infiltrate is true] (def=no)?</string>
                  </property>
@@ -1637,6 +1721,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="fraidycatCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="statusTip">
                   <string>Is it inherently afraid and will panic easily (def=no)?</string>
                  </property>
@@ -1660,6 +1750,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="infiltrateCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="statusTip">
                   <string>Can it enter a building like a spy or thief (def=no)?</string>
                  </property>
@@ -1676,6 +1772,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="3" column="1">
                 <widget class="QCheckBox" name="isCanineCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="statusTip">
                   <string>Should special case dog logic be applied to this?</string>
                  </property>
@@ -1732,6 +1834,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="crushableCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Can it be crushed by a heavy tracked vehicle (def=no)?</string>
                  </property>
@@ -1752,6 +1860,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="trackedCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>Is this vehicle tracked [as opposed to wheeled] (def=no)?</string>
                  </property>
@@ -1772,6 +1886,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item row="2" column="1">
                 <widget class="QCheckBox" name="noMovingFireCheckBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>22</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>The vehicle must stop before it can fire (def=no)?</string>
                  </property>

@@ -307,12 +307,13 @@ class AppController:
         :param column: The column to change.
         :param controller: The controller responsible for the widget.
         """
+        if type(controller.value) is float:
+            value = round(controller.value, 2)
+        else:
+            value = controller.value
+
         try:
             result = self.model.query_first(controller.table, Name=controller.name)
-            if type(controller.value) is float:
-                value = round(controller.value, 2)
-            else:
-                value = controller.value
 
             result.__setattr__(column, value)
 

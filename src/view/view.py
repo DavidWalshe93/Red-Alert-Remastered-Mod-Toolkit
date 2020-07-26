@@ -14,8 +14,8 @@ class View(Ui_MainWindow, QMainWindow):
         Abstract base for all views in the application.
         """
         super().__init__(*args, **kwargs)
-        self.DEFAULT_STYLE_TEMPLATE = "{  background-color : white; color : black; font-size: 12px; height: 20px; }"
-        self.CUSTOM_STYLE_TEMPLATE = "{ background-color : black; color : white; font-size: 12px; height: 20px; }"
+        self.DEFAULT_STYLE_TEMPLATE = "{  background-color : white; color : black; font-size: 15px; height: 22px; }"
+        self.CUSTOM_STYLE_TEMPLATE = "{ background-color : black; color : white; font-size: 15px; height: 22px; }"
 
     def default_style(self, widget):
         return f"{type(widget).__name__} {self.DEFAULT_STYLE_TEMPLATE}"
