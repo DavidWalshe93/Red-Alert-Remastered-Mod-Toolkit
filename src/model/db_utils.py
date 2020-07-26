@@ -6,7 +6,7 @@ import os
 import logging
 import sys
 
-from src.ini_creator.parser.parser import IniParser
+from src.compiler.parser.parser import IniParser
 from src.model.db_manager import DBManager
 from src.model.models.units.buildings import BuildingsDefault, BuildingsCustom
 from src.model.models.units.aircraft import AircraftDefault, AircraftCustom
