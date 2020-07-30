@@ -64,7 +64,7 @@ class Resources(Toolbox):
         Increments the resource size before placing an ore field.
         """
         self.select_asset()
-        ui.moveTo(195, 139)
+        ui.moveTo(184, 132)
         for i in range(1, self.size):
             ui.click()
 
@@ -73,7 +73,7 @@ class Resources(Toolbox):
         """
         Selects the gems toggle switch for resource placement.
         """
-        ui.moveTo(18, 167)
+        ui.moveTo(7, 159)
         ui.click()
 
     def draw(self, size: int = 1, gems: bool = False, force_replace: bool = False, *args, **kwargs) -> None:

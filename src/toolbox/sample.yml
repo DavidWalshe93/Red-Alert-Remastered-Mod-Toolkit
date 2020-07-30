@@ -1,0 +1,30 @@
+# David Walshe
+# 28/07/2020
+
+#- walls:
+#    orient: y
+#    start: 0
+#    end: 30
+#    offset: 5
+#    asset: concrete_walls
+#- base_walls:
+#    x1: 40
+#    y1: 40
+#    x2: 70
+#    y2: 70
+#    asset: barbed_wire
+#- base:
+#    x: 60
+#    y: 60
+#    player: P0
+#- walled_base:
+#    x: 90
+#    y: 90
+#    size: 5
+#    asset: concrete_walls
+#    player: P1
+- full_base:
+    x: 60
+    y: 30
+    player: P4
+

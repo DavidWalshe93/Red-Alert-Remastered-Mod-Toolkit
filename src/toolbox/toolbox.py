@@ -53,14 +53,13 @@ class Toolbox(ABC):
 
         return round(coordinate * self.BASE_ASSET_SIZE + self.Y_START + (self.BASE_ASSET_SIZE * self.asset_length))
 
-    @abstractmethod
     def select_asset(self):
         """
         Abstract method to be implemented to select a resource from the Map Builder app.
         """
         pass
 
-    def draw(self, route: tuple, force_replace: bool = False):
+    def draw(self, route: tuple, force_replace: bool = False, remove: bool = False):
         """
         Implemented to draw on the Map Builder app canvas.
         """
@@ -68,7 +67,11 @@ class Toolbox(ABC):
 
         if force_replace:
             self.__draw(route, "RIGHT")
-        self.__draw(route, "LEFT")
+
+        if remove:
+            self.__draw(route, "RIGHT")
+        else:
+            self.__draw(route, "LEFT")
 
         ui.keyUp("shift")
 
